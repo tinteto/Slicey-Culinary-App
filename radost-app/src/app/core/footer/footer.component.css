@@ -1,0 +1,12 @@
+.containerFooter {
+    max-width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.app-footer {
+    background-color: rgb(112, 111, 111);
+    color: white;
+    font-size: 10px;
+    padding: 8px 0px;
+}

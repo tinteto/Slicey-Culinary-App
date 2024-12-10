@@ -1,0 +1,62 @@
+<div class="container">
+    <!-- HEADER IMAGE -->
+    <figure>
+      <img class="header-img" src="./../../../assets/photos/lasagna.jpg" alt="RecipeImg">
+    </figure>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <h1 class="content-title">{{recipe.name}}</h1> <!--name of the recipe-->
+      <p>
+        An easy and quick dish, perfect for any meal. This classic recipe combines easy to access products cooked
+        to perfection, optionally accompanied by your choice of wine, or other suitable beverage. Enjoy!
+      </p>
+      <!-- PREPARATION TIME
+      <article class="preparation">
+        <h2>Preparation time</h2>
+        <ul>
+          <li>
+            <p><strong>Total</strong>: Approximately 10 minutes</p>
+          </li>
+          <li>
+            <p><strong>Preparation</strong>: 5 minutes</p>
+          </li>
+          <li>
+            <p><strong>Cooking</strong>: 5 minutes</p>
+          </li>
+        </ul>
+      </article>  -->
+      <!-- INGREDIENTS -->
+      <article class="ingredients">
+        <h2>Ingredients</h2>
+        <ul> <!-- *ngFor="let ingredient of recipe.ingredients"-->
+          <li>
+            <p> {{recipe.ingredients}} </p>
+          </li>
+        </ul>
+      </article>
+      <hr>
+      <!-- INSTRUCTIONS -->
+      <article class="instructions">
+        <h2>Instructions</h2>
+        <ul> <!-- *ngFor="let step of recipe.steps"-->
+          <li>
+            <div>
+              <p>{{recipe.steps}}</p>
+            </div>
+          </li>
+        </ul>
+      </article>
+      <hr>
+    </main>
+
+    <div class="btnEdit">
+    <button class="editRecipe">Edit Recipe</button>
+    </div>
+    <div class="btnDel">
+    <button class="deleteRecipe" (click)="onDeleteRecipe()">Delete Recipe</button>
+    </div>
+</div>
+
+
+

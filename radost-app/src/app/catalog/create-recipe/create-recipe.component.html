@@ -1,0 +1,86 @@
+<div class="container">
+
+<form #form="ngForm" (ngSubmit)="submitRecipe(form)">
+    <div class="recipeName">
+        <label for="name">Recipe name:</label>
+        <input 
+        type="text" 
+        name="name"
+        ngModel
+        #inputRecipeName="ngModel"
+        required
+        minlength="3"
+        >
+   </div>
+   <ng-container *ngIf="inputRecipeName.touched">
+    <p *ngIf="inputRecipeName.errors?.['required']">Recipe name is required!</p>
+    <p *ngIf="inputRecipeName.errors?.['minlength']">Recipe name should be at least 3 characters long!</p>
+   </ng-container>
+
+    <div class="ingredients">
+        <label for="ingredients">Ingredients:</label>
+        <textarea 
+        type="text" 
+        name="ingredients" 
+        id="ingredients" 
+        placeholder="Enter all ingredients required..."
+        rows="10"
+        ngModel
+        #textAreaIngredients="ngModel"
+        required
+        minlength="10"
+        ></textarea>
+  </div>
+  <ng-container *ngIf="textAreaIngredients.touched">
+    <p *ngIf="textAreaIngredients.errors?.['required']">Ingredients text is required!</p>
+    <p *ngIf="textAreaIngredients.errors?.['minlength']">Ingredients text should be at least 10 characters long!</p>
+  </ng-container>
+
+    <div class="steps">
+        <label for="steps">Instructions:</label>
+       <textarea 
+       type="text" 
+       name="steps" 
+       id="steps" 
+       rows="10" 
+       placeholder="Enter all steps required..."
+       ngModel
+       #textAreaStepsName="ngModel"
+       required
+       minlength="10"
+       ></textarea>
+   </div>
+   <ng-container *ngIf="textAreaStepsName.touched">
+    <p *ngIf="textAreaStepsName.errors?.['required']">Instructions text is required!</p>
+    <p *ngIf="textAreaStepsName.errors?.['minlength']">Instructions text should be at least 10 characters long!</p>
+   </ng-container>
+
+    <div class="img">
+        <label>Image: <input type="text" name="img" placeholder="Image URL"></label>
+<!-- ! евентуално да въведа валидации-->
+    </div>
+
+    <div class="create-recipe-buttons">
+        <button class="cancel">Cancel</button>
+        <button class="create">Create recipe</button>
+    </div>
+
+</form>
+
+
+</div>
+
+<!--
+
+        <section class="create">
+            <h2>New Recipe</h2>
+            <form>
+                <label>Name: <input type="text" name="name" placeholder="Recipe name"></label>
+                <label>Image: <input type="text" name="img" placeholder="Image URL"></label>
+                <label class="ml">Ingredients: <textarea name="ingredients" placeholder="Enter ingredients on separate lines"></textarea></label>
+                <label class="ml">Preparation: <textarea name="steps" placeholder="Enter preparation steps on separate lines"></textarea></label>
+                <input type="submit" value="Create Recipe">
+            </form>
+        </section>
+-->
+

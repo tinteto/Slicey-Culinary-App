@@ -1,0 +1,61 @@
+<!--user Card-->
+
+<div class="container">
+    <ng-container *ngIf="!showEditProfile">
+    <div class="card">
+        <img src="./../../../assets/photos/noah-buscher-8A7fD6Y5VF8-unsplash.jpg" alt="ProfilePicture" style="width:100%">
+        <p>Name:</p>
+        <h1>{{userProfileDetails.username}}</h1>
+
+       <!-- <p>More about me:</p>
+        <p class="aboutMe">CEO & Founder, Example</p> -->
+
+        <p>Contact me here:</p>
+        <p>{{userProfileDetails.email}}</p>
+
+        <p><button class="editBtn" (click)="onShow()">Edit profile</button></p>
+    </div>
+    </ng-container>
+
+
+
+<!-- form to be edited only by the user -->
+<ng-container *ngIf="showEditProfile">
+<form [formGroup]="form" (ngSubmit)="updateProfileHandler()" >
+<div class="card">
+
+    <p>Name:</p>
+    <input type="text" name="username" id="username" formControlName="username" [value]="userProfileDetails.username"/>
+    <ng-container *ngIf="form.get('username')?.touched">
+        <p *ngIf="form.get('username')?.errors?.['required']">Name is required!</p>
+        <p *ngIf="form.get('username')?.errors?.['minlength']">Name should be at least 4 characters!</p>
+        <p *ngIf="form.get('username')?.errors?.['maxlength']">Name should not exceed 12 characters!</p>
+    </ng-container>
+
+
+ <!--  <p>More about me:</p>
+    <textarea type="text" name="additionalInfo" id="additionalInfo" rows="3" formControlName="additionalInfo"></textarea>
+    <ng-container>
+        <p *ngIf="form.get('additionalInfo')?.errors?.['maxlength']">Additional information should not exceed 100 characters!</p>
+    </ng-container> --> 
+
+
+    <p>Contact me here:</p>
+    <input type="text" name="email" id="email" formControlName="email" [value]="userProfileDetails.email" />
+
+    <ng-container *ngIf="form.get('email')?.touched">
+        <p *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
+        <p *ngIf="form.get('email')?.errors?.['pattern']">Email is not valid!</p>
+    </ng-container>
+
+    <button class="goBack" (click)="onCancel($event)">Go back</button>
+    <button class="saveProfile" [disabled]="form.invalid">Update profile</button>
+   
+</div>
+</form>
+</ng-container>
+</div>
+
+
+
+

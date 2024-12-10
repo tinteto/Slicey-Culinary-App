@@ -1,0 +1,16 @@
+<!--!to be edited-->
+<main>
+    <div *ngFor="let recipe of recipes" class="recipeContainer">
+    <div class="card">
+        <img src="./../../../assets/photos/lasagna.jpg" alt="RecipeImg" style="width:100%">
+       
+        <h1>{{ recipe.name }}</h1>
+        <p class="price">$19.99</p>
+        <p>{{ recipe.ingredients }}</p>
+        <p><button [routerLink]="recipe._id">View Recipe</button></p> <!-- води към правилната рецепта-->
+    </div>
+    </div>
+</main>
+
+               
+  

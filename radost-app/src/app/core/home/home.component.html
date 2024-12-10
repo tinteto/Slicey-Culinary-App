@@ -1,0 +1,33 @@
+<div class="container">
+  
+<div class="welcome">
+    <h3>Welcome</h3>
+    <h1>
+    Easy recipes for any occasion!
+    </h1>
+    <p>Here you can find recipes for beginners, as well as for true masterchefs. Roll up your sleeves and let's get busy!</p>
+    
+    <ng-container *ngIf="!isLoggedIn">
+    <div class="guest">
+      <ul>
+        <li>
+        <a routerLink="/login">
+            <i class=""></i>
+            Login
+          </a>
+        </li>
+        <li>
+          <a routerLink="/register">
+            <i class=""></i>
+        Register
+          </a>
+        </li>
+      </ul>
+    </div>
+    </ng-container>
+
+  </div>
+</div>
+
+
+  

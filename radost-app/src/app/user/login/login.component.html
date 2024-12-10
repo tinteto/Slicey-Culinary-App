@@ -1,0 +1,45 @@
+<form [formGroup]="form" (ngSubmit)="login()">
+    <div class="imgcontainer">
+      <img src="img_avatar2.png" alt="Avatar" class="avatar">
+    </div>
+  
+    <!--username-->
+    <div class="container">
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" formControlName="email">
+
+      <ng-container *ngIf="form.get('email')?.touched">
+        <p *ngIf="form.get('email')?.errors?.['required']" style="color: rgb(255, 51, 0)">Email is required!</p>
+
+        <p *ngIf="form.get('email')?.errors?.['pattern']" style="color: rgb(255, 51, 0)">Email is not valid!</p>
+      </ng-container>
+  
+
+    <!--password-->
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" formControlName="password">
+
+      <ng-container *ngIf="form.get('password')?.touched">
+        <p *ngIf="form.get('password')?.errors?.['required']" style="color: rgb(255, 51, 0)">Password is required!</p>
+
+       <!--<p *ngIf="form.get('password')?.errors?.['pattern']" style="color: rgb(255, 51, 0)">Password must contain at least 1 capital letter, 1 small letter and 1 digit!</p> --> 
+      </ng-container>
+  
+     
+    
+      <button type="submit" [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? '#f44336' : '#04AA6D'}">Login</button>
+   
+     
+    </div>
+
+    <p>You don't have an account yet? <a routerLink="/register">Register here!</a></p>
+  
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" class="cancelbtn">Cancel</button>
+    </div>
+    
+  </form>
+
+
+
+
