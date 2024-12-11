@@ -10,7 +10,7 @@ import { CoreModule } from './core/core.module';
 import { UserModule } from './user/user.module';
 import { SharedModule } from './shared/shared.module';
 import { CatalogModule } from './catalog/catalog.module';
-import { HttpClientModule } from '@angular/common/http'; //!
+import { HttpClientModule } from '@angular/common/http'; //! IMPORTANT
 import { appInterceptorProvider } from './app.interceptor';
 import { UserAuthComponent } from './user-auth/user-auth.component';
 
@@ -28,7 +28,7 @@ import { UserAuthComponent } from './user-auth/user-auth.component';
     BrowserModule,
     CoreModule, //header, footer, home, error
     SharedModule,
-    UserModule,
+    // UserModule,
     CatalogModule,//експортваме каталог модула, който си е експортнал каталог раутинг модула
     HttpClientModule,
     AppRoutingModule, // винаги да стои накрая

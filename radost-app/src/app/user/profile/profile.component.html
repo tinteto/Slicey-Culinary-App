@@ -13,7 +13,7 @@
         <p>Contact me here:</p>
         <p>{{userProfileDetails.email}}</p>
 
-        <p><button class="editBtn" (click)="onShow()">Edit profile</button></p>
+        <p><button class="editBtn" (click)="onShowEditProfile()">Edit profile</button></p>
     </div>
     </ng-container>
 
@@ -48,8 +48,8 @@
         <p *ngIf="form.get('email')?.errors?.['pattern']">Email is not valid!</p>
     </ng-container>
 
-    <button class="goBack" (click)="onCancel($event)">Go back</button>
-    <button class="saveProfile" [disabled]="form.invalid">Update profile</button>
+    <button class="goBack" (click)="onCancel($event)">Go Back</button>
+    <button class="saveProfile" [disabled]="form.invalid">Save Changes</button>
    
 </div>
 </form>

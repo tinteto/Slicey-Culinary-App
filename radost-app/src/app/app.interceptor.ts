@@ -6,9 +6,11 @@ import {
   HttpInterceptor,
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { UserService } from './user/user.service';
+import { Router } from '@angular/router';
+import { ErrorService } from './core/error/error.service';
 
 
 const apiUrl = environment.apiUrl //взимам си url-a от обекта environment
@@ -17,7 +19,7 @@ const apiUrl = environment.apiUrl //взимам си url-a от обекта en
 export class AppInterceptor implements HttpInterceptor {
 userKey = 'userKey';
 
-constructor(private userService: UserService) {}
+constructor(private userService: UserService, private errorService: ErrorService, private router: Router) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -44,7 +46,17 @@ if (token && !request.headers.has('Content-Type')) {
    console.log(request); //принтира всички заявки, които правим
 
     //!error handling
-    return next.handle(request);
+    return next.handle(request).pipe(
+      catchError((error) => {
+        if(error.status === 401) {
+          this.router.navigate(['/auth/login']); //ако не съм оторизиран за даденото събитие ме препраща към логин формата
+        } else {
+          this.errorService.setError(error);
+          this.router.navigate(['/error']);
+        }
+        return [error]; //винаги връща масив от грешки
+      })
+    );
     }    
 }
 

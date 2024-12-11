@@ -6,12 +6,12 @@
         <ul>
 
             <div *ngIf="!isLoggedIn"> <!--визуализира се при нелогнат потребител-->
-                <li><a routerLink="/login">Login</a></li>
-                <li><a routerLink="/register">Register</a></li>
+                <li><a routerLink="/auth/login">Login</a></li>
+                <li><a routerLink="/auth/register">Register</a></li>
             </div>
 
             <div *ngIf="isLoggedIn"> <!--визуализира се при логнат потребител-->
-                <li><a routerLink="/profile">{{ username }}'s profile</a></li>
+                <li><a routerLink="/auth/profile">{{ username }}'s profile</a></li>
                 <li><a routerLink="/logout" (click)="logout()">Logout</a></li>
             </div>
            

@@ -16,7 +16,7 @@ export class UserService implements OnDestroy {
   private user$ = this.user$$.asObservable();
 
 
-  user: AuthUser | undefined; //! to add types
+  user: AuthUser | undefined; 
   userKey = 'userKey'; //това е в localStorage ключа на логнатия user
   userSubscription: Subscription;
   

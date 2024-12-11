@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit{
   form = this.formBuilder.group({
     username: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(12)]],
    // additionalInfo: ['', [Validators.maxLength(100)]],
-    email: ['', [Validators.required, Validators.pattern('[A-Za-z0-9.-]+@[a-zA-Z0-9.-]+')]], //toDO
+    email: ['', [Validators.required, Validators.pattern('[A-Za-z0-9.-]+@[a-zA-Z0-9.-]+')]], //TODO fix regexp
 })
 
 ngOnInit(): void {
@@ -41,7 +41,7 @@ ngOnInit(): void {
   });
 }
 
-onShow(): void {
+onShowEditProfile(): void {
   this.showEditProfile = !this.showEditProfile;
 }
 
@@ -57,14 +57,14 @@ updateProfileHandler(): void {
 
   //когато се ъпдейтне формата, ще се зареди картичката
   this.userService.updateUserProfile(username, email).subscribe(()=> {
-  this.onShow();
+  this.onShowEditProfile();
   });
 
 }
 
 onCancel(e: Event) {
   e.preventDefault();
-  this.onShow();
+  this.onShowEditProfile();
 }
 
 }

@@ -19,18 +19,16 @@ export class ApiService {
   }
 
   getSingleRecipeById(id: string) {
-    console.log(id);
-    
     return this.http.get<Recipe>(`${apiUrl}/data/recipes/${id}`);
   }
 
-//!img
+
   createNewRecipe(name: string, ingredients: string, steps: string, img: string) { //!!  img
     const payload = { name, ingredients, steps, img };
     return this.http.post<Recipe>(`${apiUrl}/data/recipes`, payload);
   }
   
-//TODO - auth user
+
   updateRecipe(id: string, name: string, ingredients: string, steps: string, img: string  ) { //!!img
     const payload = { name, ingredients, steps, img };
     return this.http.put<Recipe>(`${apiUrl}/data/recipes/${id}` , payload);

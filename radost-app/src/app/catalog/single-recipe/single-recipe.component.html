@@ -1,5 +1,9 @@
 <div class="container">
-    <!-- HEADER IMAGE -->
+  <div class="recipeDetails">
+   
+<!--!READ ONLY MODE-->
+ <!-- HEADER IMAGE -->
+  <ng-container *ngIf="!showEditRecipeForm">
     <figure>
       <img class="header-img" src="./../../../assets/photos/lasagna.jpg" alt="RecipeImg">
     </figure>
@@ -8,8 +12,7 @@
     <main class="main-content">
       <h1 class="content-title">{{recipe.name}}</h1> <!--name of the recipe-->
       <p>
-        An easy and quick dish, perfect for any meal. This classic recipe combines easy to access products cooked
-        to perfection, optionally accompanied by your choice of wine, or other suitable beverage. Enjoy!
+        An easy and quick dish, perfect for any meal. This classic recipe combines easy to access products prepared to perfection, optionally accompanied by your choice of wine, or other suitable beverage. Enjoy!
       </p>
       <!-- PREPARATION TIME
       <article class="preparation">
@@ -49,14 +52,65 @@
       </article>
       <hr>
     </main>
-
+<!-- BUTTONS -->
     <div class="btnEdit">
-    <button class="editRecipe">Edit Recipe</button>
+    <button class="editRecipe" (click)="onToggle()">Edit Recipe</button>
     </div>
     <div class="btnDel">
     <button class="deleteRecipe" (click)="onDeleteRecipe()">Delete Recipe</button>
     </div>
-</div>
+  </ng-container>
+
+
+
+  <!--!EDIT MODE-->
+  <ng-container *ngIf="showEditRecipeForm">
+    <form [formGroup]="form" (ngSubmit)="updateRecipeHandler()">
+      
+      <div class="img">
+        <label>Image: <input type="text" name="img" placeholder="Image URL"></label>
+      </div>
+     <!-- <ng-container *ngIf="form.get('img')?.touched">
+        <p *ngIf="form.get('img')?.errors?.['required']">Image is required!</p>
+      </ng-container> -->
+
+      <div>
+        <p>Recipe Name:</p>
+        <input type="text" name="name" id="name" formControlName="name">
+      </div>
+      <!--recipe name validations-->
+      <ng-container *ngIf="form.get('name')?.touched">
+        <p *ngIf="form.get('name')?.errors?.['required']">Recipe Name is required!</p>
+      </ng-container>
+
+
+      <div>
+        <p>Ingredients:</p>
+        <textarea type="text" name="ingredients" id="ingredients" placeholder="Enter all ingredients required..." formControlName="ingredients"></textarea>
+      </div>
+      <ng-container *ngIf="form.get('ingredients')?.touched">
+        <p *ngIf="form.get('ingredients')?.errors?.['required']">Enter all ingredients required!</p>
+      </ng-container>
+      <!-- ingredients validations-->
+
+      <div>
+        <p>Instructions</p>
+        <textarea type="text" name="steps" id="steps" placeholder="Enter all steps that should be followed..." formControlName="steps"></textarea>
+      </div>
+      <!--steps validations-->
+      <ng-container *ngIf="form.get('steps')?.touched">
+        <p *ngIf="form.get('steps')?.errors?.['required']">Enter all instructions that should be followed!</p>
+      </ng-container>
+
+      <!--ACTIONS-->
+      <button class="cancelEdit" (click)="onCancelEditRecipe($event)">Cancel</button>
+      <button class="saveChanges">Save Changes</button>
+
+    </form>
+  </ng-container>
+
+  </div>
+  </div>
 
 
 

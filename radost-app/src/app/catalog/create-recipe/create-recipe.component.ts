@@ -16,13 +16,18 @@ export class CreateRecipeComponent {
     if(form.invalid) {
       return;
     }
-  console.log(form.value); //връща обект със въведените стойности във формата
+  // console.log(form.value); //връща обект със въведените стойности във формата
 
   const {name, ingredients, steps, img} = form.value; //взимам въведените стойности от формата
 
   this.apiService.createNewRecipe(name, ingredients , steps, img).subscribe(() => {
   this.router.navigate(['/recipes']);
 })
+  }
+
+  onCancel(event: Event): void {
+event.preventDefault();
+this.router.navigate(['/recipes']);
   }
 
 }

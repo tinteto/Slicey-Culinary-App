@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
   form = this.formBuilder.group({
     username: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]],
-    email: ['', [Validators.required, Validators.pattern('[A-Za-z0-9.-]+@[a-zA-Z0-9.-]+')]], //!fix regexp
+    email: ['', [Validators.required, Validators.pattern('[A-Za-z0-9.-]+@[a-zA-Z0-9.-]+')]], //TODO fix regexp
     
     passGroup: this.formBuilder.group(
     {
@@ -38,7 +38,7 @@ export class RegisterComponent {
     if(this.form.invalid) {
       return;
     }
-    console.log(this.form.value); //получавам обект със всички стойности на формата
+  //  console.log(this.form.value); //получавам обект със всички стойности на формата
 
     const { 
       username, 

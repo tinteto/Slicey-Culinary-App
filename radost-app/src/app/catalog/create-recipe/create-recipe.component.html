@@ -1,6 +1,7 @@
 <div class="container">
 
 <form #form="ngForm" (ngSubmit)="submitRecipe(form)">
+    <!--RECIPE NAME-->
     <div class="recipeName">
         <label for="name">Recipe name:</label>
         <input 
@@ -17,6 +18,7 @@
     <p *ngIf="inputRecipeName.errors?.['minlength']">Recipe name should be at least 3 characters long!</p>
    </ng-container>
 
+   <!--RECIPE INGREDIENTS-->
     <div class="ingredients">
         <label for="ingredients">Ingredients:</label>
         <textarea 
@@ -36,6 +38,7 @@
     <p *ngIf="textAreaIngredients.errors?.['minlength']">Ingredients text should be at least 10 characters long!</p>
   </ng-container>
 
+  <!--RECIPE INSTRUCTIONS-->
     <div class="steps">
         <label for="steps">Instructions:</label>
        <textarea 
@@ -55,13 +58,17 @@
     <p *ngIf="textAreaStepsName.errors?.['minlength']">Instructions text should be at least 10 characters long!</p>
    </ng-container>
 
+
+   <!--RECIPE IMAGE-->
     <div class="img">
         <label>Image: <input type="text" name="img" placeholder="Image URL"></label>
 <!-- ! евентуално да въведа валидации-->
     </div>
 
+
+    <!--RECIPE BUTTONS-->
     <div class="create-recipe-buttons">
-        <button class="cancel">Cancel</button>
+        <button class="cancel" (click)="onCancel($event)">Cancel</button>
         <button class="create">Create recipe</button>
     </div>
 

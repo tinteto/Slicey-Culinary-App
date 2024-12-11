@@ -7,3 +7,10 @@ export interface Recipe {
         _createdOn: number,
         _id: string,   
 }
+
+export interface RecipeDetails {
+        name: string,
+        ingredients: string,
+        steps: string,
+        img: string,
+}
