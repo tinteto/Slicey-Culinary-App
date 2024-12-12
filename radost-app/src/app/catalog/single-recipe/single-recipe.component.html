@@ -53,13 +53,30 @@
       <hr>
     </main>
 <!-- BUTTONS -->
-    <div class="btnEdit">
-    <button class="editRecipe" (click)="onToggle()">Edit Recipe</button>
+    <div class="buttons">
+    <button *ngIf="isLoggedIn && isOwner(recipe)"
+    class="editRecipe" (click)="onToggle()">Edit Recipe</button>
+
+    <button *ngIf="isLoggedIn && isOwner(recipe)"
+    class="deleteRecipe" (click)="onDeleteRecipe()">Delete Recipe</button>
     </div>
-    <div class="btnDel">
-    <button class="deleteRecipe" (click)="onDeleteRecipe()">Delete Recipe</button>
-    </div>
-  </ng-container>
+
+
+<div class="commentSection" > <!--TODO-->
+  <div class="title">
+   <h4>Comments for {{recipe.name}}:</h4>
+  </div>
+  <header>
+    <p> posted a comment:</p>
+  </header>
+  <div class="commentContent">
+    <p></p>
+  </div>
+</div>
+</ng-container>
+
+
+
 
 
 
@@ -67,21 +84,25 @@
   <ng-container *ngIf="showEditRecipeForm">
     <form [formGroup]="form" (ngSubmit)="updateRecipeHandler()">
       
-      <div class="img">
-        <label>Image: <input type="text" name="img" placeholder="Image URL"></label>
-      </div>
-     <!-- <ng-container *ngIf="form.get('img')?.touched">
-        <p *ngIf="form.get('img')?.errors?.['required']">Image is required!</p>
-      </ng-container> -->
-
+  
       <div>
         <p>Recipe Name:</p>
         <input type="text" name="name" id="name" formControlName="name">
       </div>
       <!--recipe name validations-->
       <ng-container *ngIf="form.get('name')?.touched">
-        <p *ngIf="form.get('name')?.errors?.['required']">Recipe Name is required!</p>
+        <p *ngIf="form.get('name')?.errors?.['required']" style="color: rgb(255, 51, 0)">Recipe name is required!</p>
+        <p *ngIf="form.get('name')?.errors?.['minlength']" style="color: rgb(255, 51, 0)">Recipe name should be at least 3 characters long!</p>
       </ng-container>
+
+
+      
+      <div class="img">
+        <label>Image: <input type="text" name="img" placeholder="Image URL"></label>
+      </div>
+     <!-- <ng-container *ngIf="form.get('img')?.touched">
+        <p *ngIf="form.get('img')?.errors?.['required']" style="color: rgb(255, 51, 0)">Image is required!</p>
+      </ng-container> -->
 
 
       <div>
@@ -89,7 +110,8 @@
         <textarea type="text" name="ingredients" id="ingredients" placeholder="Enter all ingredients required..." formControlName="ingredients"></textarea>
       </div>
       <ng-container *ngIf="form.get('ingredients')?.touched">
-        <p *ngIf="form.get('ingredients')?.errors?.['required']">Enter all ingredients required!</p>
+        <p *ngIf="form.get('ingredients')?.errors?.['required']" style="color: rgb(255, 51, 0)">Enter all ingredients required!</p>
+        <p *ngIf="form.get('ingredients')?.errors?.['minlength']" style="color: rgb(255, 51, 0)">Ingredients text should be at least 10 characters long!</p>
       </ng-container>
       <!-- ingredients validations-->
 
@@ -99,12 +121,13 @@
       </div>
       <!--steps validations-->
       <ng-container *ngIf="form.get('steps')?.touched">
-        <p *ngIf="form.get('steps')?.errors?.['required']">Enter all instructions that should be followed!</p>
+        <p *ngIf="form.get('steps')?.errors?.['required']" style="color: rgb(255, 51, 0)">Enter all instructions that should be followed!</p>
+        <p *ngIf="form.get('steps')?.errors?.['minlength']" style="color: rgb(255, 51, 0)">Instructions text should be at least 10 characters long!</p>
       </ng-container>
 
       <!--ACTIONS-->
       <button class="cancelEdit" (click)="onCancelEditRecipe($event)">Cancel</button>
-      <button class="saveChanges">Save Changes</button>
+      <button class="saveChanges" [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? '#f44336' : '#04AA6D'}">Save Changes</button>
 
     </form>
   </ng-container>

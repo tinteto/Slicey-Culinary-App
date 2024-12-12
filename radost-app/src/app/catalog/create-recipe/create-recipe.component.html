@@ -14,9 +14,15 @@
         >
    </div>
    <ng-container *ngIf="inputRecipeName.touched">
-    <p *ngIf="inputRecipeName.errors?.['required']">Recipe name is required!</p>
-    <p *ngIf="inputRecipeName.errors?.['minlength']">Recipe name should be at least 3 characters long!</p>
+    <p *ngIf="inputRecipeName.errors?.['required']" style="color: rgb(255, 51, 0)">Recipe name is required!</p>
+    <p *ngIf="inputRecipeName.errors?.['minlength']" style="color: rgb(255, 51, 0)">Recipe name should be at least 3 characters long!</p>
    </ng-container>
+
+      <!--RECIPE IMAGE-->
+      <div class="img">
+        <label>Image: <input type="text" name="img" placeholder="Image URL"></label>
+<!-- ! ngModel #inputImageName="ngModel" required-->
+    </div>
 
    <!--RECIPE INGREDIENTS-->
     <div class="ingredients">
@@ -34,8 +40,8 @@
         ></textarea>
   </div>
   <ng-container *ngIf="textAreaIngredients.touched">
-    <p *ngIf="textAreaIngredients.errors?.['required']">Ingredients text is required!</p>
-    <p *ngIf="textAreaIngredients.errors?.['minlength']">Ingredients text should be at least 10 characters long!</p>
+    <p *ngIf="textAreaIngredients.errors?.['required']" style="color: rgb(255, 51, 0)">Enter all ingredients required!</p>
+    <p *ngIf="textAreaIngredients.errors?.['minlength']" style="color: rgb(255, 51, 0)">Ingredients text should be at least 10 characters long!</p>
   </ng-container>
 
   <!--RECIPE INSTRUCTIONS-->
@@ -46,7 +52,7 @@
        name="steps" 
        id="steps" 
        rows="10" 
-       placeholder="Enter all steps required..."
+       placeholder="Enter all instructions required..."
        ngModel
        #textAreaStepsName="ngModel"
        required
@@ -54,22 +60,15 @@
        ></textarea>
    </div>
    <ng-container *ngIf="textAreaStepsName.touched">
-    <p *ngIf="textAreaStepsName.errors?.['required']">Instructions text is required!</p>
-    <p *ngIf="textAreaStepsName.errors?.['minlength']">Instructions text should be at least 10 characters long!</p>
+    <p *ngIf="textAreaStepsName.errors?.['required']" style="color: rgb(255, 51, 0)">Enter all instructions that should be followed!</p>
+    <p *ngIf="textAreaStepsName.errors?.['minlength']" style="color: rgb(255, 51, 0)">Instructions text should be at least 10 characters long!</p>
    </ng-container>
-
-
-   <!--RECIPE IMAGE-->
-    <div class="img">
-        <label>Image: <input type="text" name="img" placeholder="Image URL"></label>
-<!-- ! евентуално да въведа валидации-->
-    </div>
 
 
     <!--RECIPE BUTTONS-->
     <div class="create-recipe-buttons">
         <button class="cancel" (click)="onCancel($event)">Cancel</button>
-        <button class="create">Create recipe</button>
+        <button class="create" [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? '#f44336' : '#04AA6D'}">Create recipe</button>
     </div>
 
 </form>

@@ -17,19 +17,9 @@ export class UserService implements OnDestroy {
 
 
   user: AuthUser | undefined; 
-  userKey = 'userKey'; //това е в localStorage ключа на логнатия user
+  userKey = 'userData'; //това е в localStorage ключа на логнатия user
   userSubscription: Subscription;
   
-
-
-public getToken(): string | null {
-return localStorage.getItem(this.userKey);
-}
-
-// public setToken(token: string): void {
-//   localStorage.setItem(this.userKey, token)
-// }
-
 
   get isLogged(): boolean {
     return !!this.user;
@@ -37,15 +27,23 @@ return localStorage.getItem(this.userKey);
 
 
   constructor(private http: HttpClient) {
+   this.getToken(); //?!
    //чрез този subscription запазваме user-a в обект, по този начин gettera isLogged() разбира дали има user и не се губи юзъра на рефреш
    this.userSubscription = this.user$.subscribe((user) => {
    this.user = user;
+ 
   })
+  }
+
+
+  public getToken(): string | null {
+    return localStorage.getItem(this.userKey);
   }
 
 
   
   login(email: string, password: string) {
+   // debugger;
 return this.http
 .post<AuthUser>(`${apiUrl}/users/login`, { email, password })
 .pipe(tap((user) => {

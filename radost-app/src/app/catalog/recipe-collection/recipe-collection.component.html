@@ -1,13 +1,41 @@
 <!--!to be edited-->
 <main>
+    <div class="welcome">
+        <h3>Welcome</h3>
+        <h1>
+        Easy recipes for any occasion!
+        </h1>
+        <p>Here you can find recipes for beginners, as well as for true masterchefs. Roll up your sleeves and let's get busy!</p>
+        
+        <ng-container *ngIf="!isLoggedIn">
+        <div class="guest">
+          <ul>
+            <li>
+            <a routerLink="/auth/login">
+                <i class=""></i>
+                Login
+              </a>
+            </li>
+            <li>
+              <a routerLink="/auth/register">
+                <i class=""></i>
+            Register
+              </a>
+            </li>
+          </ul>
+        </div>
+        </ng-container>
+    </div>
+
+<h2>Browse Recipes</h2>
     <div *ngFor="let recipe of recipes" class="recipeContainer">
     <div class="card">
         <img src="./../../../assets/photos/lasagna.jpg" alt="RecipeImg" style="width:100%">
        
         <h1>{{ recipe.name }}</h1>
-        <p class="price">$19.99</p>
+       <!-- <p class="price">$19.99</p> -->
         <p>{{ recipe.ingredients }}</p>
-        <p><button [routerLink]="recipe._id">View Recipe</button></p> <!-- води към правилната рецепта-->
+        <p><button [routerLink]="recipe._id" style="background-color: #04AA6D">View Recipe</button></p> <!-- води към правилната рецепта-->
     </div>
     </div>
 </main>

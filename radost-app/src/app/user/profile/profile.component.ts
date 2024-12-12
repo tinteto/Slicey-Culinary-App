@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit{
   constructor(private formBuilder: FormBuilder, private userService: UserService) {}
 
   form = this.formBuilder.group({
-    username: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(12)]],
+    username: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(12)]],
    // additionalInfo: ['', [Validators.maxLength(100)]],
     email: ['', [Validators.required, Validators.pattern('[A-Za-z0-9.-]+@[a-zA-Z0-9.-]+')]], //TODO fix regexp
 })

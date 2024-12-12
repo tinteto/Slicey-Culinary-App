@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
 import { Recipe } from 'src/app/types/recipe';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-recipe-collection',
@@ -11,7 +12,12 @@ import { Recipe } from 'src/app/types/recipe';
 export class RecipeCollectionComponent implements OnInit {
  recipes: Recipe[] | null = []; //извиквам си рецептите от типа, за да ги разпознае темплейта, когато ги извиквам там
 
-  constructor (private apiService: ApiService) {}
+get isLoggedIn(): boolean {
+ return this.userService.isLogged;
+}
+
+
+  constructor (private apiService: ApiService, private userService: UserService) {}
 
  ngOnInit(): void {
   this.apiService.getAllRecipes().subscribe((recipes) => {

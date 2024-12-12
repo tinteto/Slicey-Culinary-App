@@ -50,6 +50,9 @@ if (token && !request.headers.has('Content-Type')) {
       catchError((error) => {
         if(error.status === 401) {
           this.router.navigate(['/auth/login']); //ако не съм оторизиран за даденото събитие ме препраща към логин формата
+        } else if (error.status === 403) {
+        localStorage.clear();
+        this.router.navigate(['/auth/login']);
         } else {
           this.errorService.setError(error);
           this.router.navigate(['/error']);

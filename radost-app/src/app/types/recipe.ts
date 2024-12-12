@@ -1,11 +1,14 @@
+import { Comment } from "./comment";
+
 export interface Recipe {
-        _ownerId: string,
+        _ownerId: string, //user owner id
         name: string,
         img: string,
         ingredients: string[],
         steps: string[],
+        comments: Comment[],
         _createdOn: number,
-        _id: string,   
+        _id: string,   //recipeId
 }
 
 export interface RecipeDetails {

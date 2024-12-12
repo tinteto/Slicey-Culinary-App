@@ -1,6 +1,5 @@
 export interface User {
     //recipes: string[],
-    //password: string;
     email: string,
     username: string,
     password: string,
@@ -10,10 +9,10 @@ export interface User {
 
 
 export interface AuthUser {
-    accessToken: string;
+    accessToken: string; //?
     email: string;
     password: string;
-    repassword: string;
+   // repassword: string;
     username: string;
     _createdOn: number;
     _id: string;
