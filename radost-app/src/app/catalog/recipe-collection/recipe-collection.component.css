@@ -6,9 +6,9 @@
     font-family: arial;
   }
   
-  .price {
+  .date {
     color: grey;
-    font-size: 22px;
+    font-size: 16px;
   }
   
   .card button {

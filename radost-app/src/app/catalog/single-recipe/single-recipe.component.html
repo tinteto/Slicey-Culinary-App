@@ -10,6 +10,7 @@
 
     <!-- MAIN CONTENT -->
     <main class="main-content">
+      <p>Recipe created on: {{recipe._createdOn | date }}</p>
       <h1 class="content-title">{{recipe.name}}</h1> <!--name of the recipe-->
       <p>
         An easy and quick dish, perfect for any meal. This classic recipe combines easy to access products prepared to perfection, optionally accompanied by your choice of wine, or other suitable beverage. Enjoy!
@@ -32,9 +33,9 @@
       <!-- INGREDIENTS -->
       <article class="ingredients">
         <h2>Ingredients</h2>
-        <ul> <!-- *ngFor="let ingredient of recipe.ingredients"-->
+        <ul *ngFor="let ingredient of recipe.ingredients"> <!-- *ngFor="let ingredient of recipe.ingredients"-->
           <li>
-            <p> {{recipe.ingredients}} </p>
+            <p> {{ingredient}} </p>
           </li>
         </ul>
       </article>
@@ -42,10 +43,10 @@
       <!-- INSTRUCTIONS -->
       <article class="instructions">
         <h2>Instructions</h2>
-        <ul> <!-- *ngFor="let step of recipe.steps"-->
+        <ul *ngFor="let step of recipe.steps"> <!-- *ngFor="let step of recipe.steps"-->
           <li>
             <div>
-              <p>{{recipe.steps}}</p>
+              <p>{{step}}</p>
             </div>
           </li>
         </ul>
@@ -62,7 +63,7 @@
     </div>
 
 
-<div class="commentSection" > <!--TODO-->
+<div class="commentSection" > <!--TODO COMMENT SECTION-->
   <div class="title">
    <h4>Comments for {{recipe.name}}:</h4>
   </div>
@@ -87,7 +88,7 @@
   
       <div>
         <p>Recipe Name:</p>
-        <input type="text" name="name" id="name" formControlName="name">
+        <input type="text" name="name" id="name" [value]="recipeDetails.name" formControlName="name">
       </div>
       <!--recipe name validations-->
       <ng-container *ngIf="form.get('name')?.touched">
@@ -98,7 +99,7 @@
 
       
       <div class="img">
-        <label>Image: <input type="text" name="img" placeholder="Image URL"></label>
+        <label>Image: <input type="text" name="img" placeholder="Image URL" [value]="recipeDetails.img" formControlName="img"></label>
       </div>
      <!-- <ng-container *ngIf="form.get('img')?.touched">
         <p *ngIf="form.get('img')?.errors?.['required']" style="color: rgb(255, 51, 0)">Image is required!</p>
@@ -107,7 +108,7 @@
 
       <div>
         <p>Ingredients:</p>
-        <textarea type="text" name="ingredients" id="ingredients" placeholder="Enter all ingredients required..." formControlName="ingredients"></textarea>
+        <textarea type="text" name="ingredients" id="ingredients" placeholder="Enter all ingredients required..." [value]="recipeDetails.ingredients" formControlName="ingredients" ></textarea>
       </div>
       <ng-container *ngIf="form.get('ingredients')?.touched">
         <p *ngIf="form.get('ingredients')?.errors?.['required']" style="color: rgb(255, 51, 0)">Enter all ingredients required!</p>
@@ -117,7 +118,7 @@
 
       <div>
         <p>Instructions</p>
-        <textarea type="text" name="steps" id="steps" placeholder="Enter all steps that should be followed..." formControlName="steps"></textarea>
+        <textarea type="text" name="steps" id="steps" placeholder="Enter all steps that should be followed..." [value]="recipeDetails.steps" formControlName="steps" ></textarea>
       </div>
       <!--steps validations-->
       <ng-container *ngIf="form.get('steps')?.touched">

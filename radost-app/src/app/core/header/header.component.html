@@ -20,6 +20,16 @@
             <li><a routerLink="/recipes">Catalog</a></li>
             <li><a routerLink="/create-recipe">Add Recipe</a></li>
             <li><a routerLink="/about">About</a></li>
+           
+            <!--TODO search bar right align -->
+           <div class="search">
+            <form #form="ngForm" (ngSubmit)="onSearch(form)">
+                <input type="text" placeholder="Search Recipes" name="search" [(ngModel)]="search" ngModel #inputSearch="ngModel">
+                <button>
+                    <i class="fa fa-search"></i>
+                </button>
+            </form>
+        </div>
         </ul>
     </nav>
 </header>

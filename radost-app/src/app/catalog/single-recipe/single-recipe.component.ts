@@ -46,24 +46,37 @@ constructor(private formBuilder: FormBuilder, private userService: UserService, 
 
   
   ngOnInit(): void {
-
+   // debugger;
+ 
     this.activatedRoute.params.subscribe((data) => {
     const id = data['id']; 
 
     this.apiService.getSingleRecipeById(id).subscribe((recipe) => {
     console.log(recipe);
         this.recipe = recipe;
+        
       });
 
 
     this.apiService.getAllCommentsForARecipe(id).subscribe((comments) => {
-    console.log(comments); //TODO
-
-    });
-
-    });
+    console.log(comments); //TODO COMMENTS
   
+    });
+
+   //!TODO EDIT VALUES 
+    // const {name, ingredients, steps, img } = this.recipeDetails;
+    // this.recipeDetails = {
+    // name,
+    // ingredients, 
+    // steps,
+    // img,
+    // };
+    // this.form.setValue({name, ingredients, steps, img}); //в HTML-a да се добави [value]
+
+
+    });
 }
+
 
 isOwner(recipe: Recipe): boolean {
 const isUserOwner = recipe._ownerId === this.userService.user?._id;

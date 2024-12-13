@@ -18,19 +18,11 @@ export class ApiService {
     return this.http.get<Recipe[]>(`${apiUrl}/data/recipes`); //получаваме [{}, {}, {}]
   }
 
-  getMostRecentRecipes() {
-    return this.http.get<Recipe[]>(`${apiUrl}/data/recipes?select=_id%2Cname%2Cimg&sortBy=_createdOn%20desc&pageSize=3`);
-  }
-
   getSingleRecipeById(id: string) {
     return this.http.get<Recipe>(`${apiUrl}/data/recipes/${id}`);
   }
 
-  getAllCommentsForARecipe(id: string) {
-    return this.http.get<Recipe>(`${apiUrl}/data/comments?where=recipeId%3D%22${id}%22`);
-  }
 
-  
   createNewRecipe(name: string, ingredients: string, steps: string, img: string) { //!!  img
     const payload = { name, ingredients, steps, img };
     return this.http.post<Recipe>(`${apiUrl}/data/recipes`, payload);
@@ -46,5 +38,25 @@ export class ApiService {
   deleteRecipe(id: string) {
     return this.http.delete<Recipe>(`${apiUrl}/data/recipes/${id}`)
   }
+
+
+
+  //Advanced Retrieval
+  getMostRecentRecipes() {
+    return this.http.get<Recipe[]>(`${apiUrl}/data/recipes?select=_id%2Cname%2Cimg&sortBy=_createdOn%20desc&pageSize=3`);
+  }
+
+
+  searchRecipe(query: string) {
+    return this.http.get<Recipe[]>(`${apiUrl}/data/recipes?where=name%20LIKE%20%22${query}%22`);
+  }
+
+
+  getAllCommentsForARecipe(id: string) {
+    return this.http.get<Recipe>(`${apiUrl}/data/comments?where=recipeId%3D%22${id}%22`);
+  }
+
+
+
 
 }

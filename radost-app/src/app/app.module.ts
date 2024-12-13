@@ -15,6 +15,9 @@ import { appInterceptorProvider } from './app.interceptor';
 import { UserAuthComponent } from './user-auth/user-auth.component';
 
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +25,6 @@ import { UserAuthComponent } from './user-auth/user-auth.component';
     ContactsComponent,
     PageNotFoundComponent,
     UserAuthComponent,
-   
   ],
   imports: [
     BrowserModule,

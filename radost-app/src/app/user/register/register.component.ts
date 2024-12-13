@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
   form = this.formBuilder.group({
     username: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]],
-    email: ['', [Validators.required, Validators.pattern('[A-Za-z0-9.-]+@[a-zA-Z0-9.-]+')]], //TODO fix regexp
+    email: ['', [Validators.required, Validators.pattern('[A-Za-z0-9.-]+@[a-zA-Z0-9.-]+\.(com|bg|org)')]], //TODO fix regexp
     
     passGroup: this.formBuilder.group(
     {
