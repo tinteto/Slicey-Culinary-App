@@ -20,11 +20,11 @@ export class CreateRecipeComponent {
   console.log(form.value); //връща обект със въведените стойности във формата
 
   const {name, ingredients, steps, img} = form.value; //взимам въведените стойности от формата
-  const stringIngr = ingredients.split('\n');
-  const stringSteps = steps.split('\n');
+  // const ingredientsArray = ingredients.split('\n'); //TODO това работи, когато подавам масиви "let recipe of..." в темплейта
+  // const stepsArray = steps.split('\n');
 
-
-  this.apiService.createNewRecipe(name, stringIngr, stringSteps, img).subscribe(() => {
+//на създаването на рецептата ги изпращам като масиви ingredients и steps
+  this.apiService.createNewRecipe(name, ingredients, steps, img).subscribe(() => {
   this.router.navigate(['/recipes']);
 })
   }

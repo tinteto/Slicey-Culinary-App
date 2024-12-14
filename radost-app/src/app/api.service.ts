@@ -29,9 +29,9 @@ export class ApiService {
   }
   
 
-  updateRecipe(id: string, name: string, ingredients: string, steps: string, img: string  ) { //!!img
+  updateRecipe(id: string, name: string, ingredients: string, steps: string, img: string  ) { //!!img 
     const payload = { name, ingredients, steps, img };
-    return this.http.put<Recipe>(`${apiUrl}/data/recipes/${id}` , payload);
+    return this.http.put<Recipe>(`${apiUrl}/data/recipes/${id}` , payload); //изпраща данните на сървъра като стринг
   }
 
 
@@ -54,6 +54,11 @@ export class ApiService {
 
   getAllCommentsForARecipe(id: string) {
     return this.http.get<Recipe>(`${apiUrl}/data/comments?where=recipeId%3D%22${id}%22`);
+  }
+
+  postComment(id: string, content: string) {
+    const payload = { id, content };
+    return this.http.post<Recipe>(`${apiUrl}/data/comments`, payload);
   }
 
 

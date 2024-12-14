@@ -1,3 +1,4 @@
+
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
@@ -5,13 +6,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SplitPipe implements PipeTransform {
 
-  transform(value: string, ...args: unknown[]): string {
-    return `${value.split('\n')}`;
+  transform(value: string[], ...args: unknown[]): string {
+   // console.log(value);
+   // console.log(value.toString());
+    //console.log(value.join('\n'));
+    
+    return `${value.join('\n')}`;
+  
+    
   }
 
 }
 
-
-// const {name, ingredients, steps, img} = form.value; //взимам въведените стойности от формата
-// const stringIngr = ingredients.split('\n');
-// const stringSteps = steps.split('\n');
+// Prepare ingredients,Mix ingredients,Cook until done

@@ -6,6 +6,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -20,6 +21,7 @@ import { ProfileComponent } from './profile/profile.component';
     UserRoutingModule, //импортваме си userRoutingModule
     RouterModule, //! задължително импортваме RouterModule
     ReactiveFormsModule,
+    SharedModule, //?
   ]
 })
 export class UserModule { }

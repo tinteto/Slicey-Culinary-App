@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
-import { UserProfileDetails } from 'src/app/types/user';
+import { AuthUser, UserProfileDetails } from 'src/app/types/user';
 
 @Component({
   selector: 'app-profile',
@@ -9,6 +9,7 @@ import { UserProfileDetails } from 'src/app/types/user';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit{
+  user = {} as AuthUser;
   showEditProfile: boolean = false;
 
   userProfileDetails: UserProfileDetails = {
@@ -21,7 +22,7 @@ export class ProfileComponent implements OnInit{
   form = this.formBuilder.group({
     username: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(12)]],
    // additionalInfo: ['', [Validators.maxLength(100)]],
-    email: ['', [Validators.required, Validators.pattern('[A-Za-z0-9.-]+@[a-zA-Z0-9.-]+')]], //TODO fix regexp
+    email: ['', [Validators.required, Validators.pattern('[A-Za-z0-9.-]+@[a-zA-Z0-9.-]+\.(com|bg|org)')]],
 })
 
 ngOnInit(): void {
@@ -46,6 +47,7 @@ onShowEditProfile(): void {
 }
 
 updateProfileHandler(): void {
+
  if(this.form.invalid) {
     return;
   }
@@ -56,7 +58,8 @@ updateProfileHandler(): void {
   const {username, email} = this.userProfileDetails;
 
   //когато се ъпдейтне формата, ще се зареди картичката
-  this.userService.updateUserProfile(username, email).subscribe(()=> {
+  this.userService.updateUserProfile(username, email).subscribe((user)=> {
+   //TODO na update излиза от профила и дава login/register
   this.onShowEditProfile();
   });
 

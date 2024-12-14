@@ -21,7 +21,10 @@
         "url": "https://github.com/softuni-practice-server/softuni-practice-server/issues"
     },
     "homepage": "https://github.com/softuni-practice-server/softuni-practice-server#readme",
-    "dependencies": {},
+    "dependencies": {
+        "@types/moment": "^2.13.0",
+        "moment": "^2.30.1"
+    },
     "devDependencies": {
         "@rollup/plugin-commonjs": "^17.1.0",
         "@rollup/plugin-json": "^4.1.0",

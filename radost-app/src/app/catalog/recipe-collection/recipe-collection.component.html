@@ -30,11 +30,11 @@
 <h2>Browse Recipes</h2>
     <div *ngFor="let recipe of recipes" class="recipeContainer">
     <div class="card">
-        <img src="./../../../assets/photos/lasagna.jpg" alt="RecipeImg" style="width:100%">
-        <h1>{{ recipe.name }}</h1>
+        <img [src]="recipe.img" alt="RecipeImg" style="width:100%">
+        <h1>{{ recipe.name | emoji}}</h1>
     
        <!-- <p>{{ recipe.ingredients }}</p> -->
-        <p class="date">{{ recipe._createdOn | date }}</p>
+        <p class="date">{{ recipe._createdOn | momentPipe }}</p>
         <p><button [routerLink]="recipe._id" style="background-color: #04AA6D">View Recipe</button></p> <!-- води към правилната рецепта-->
     </div>
     </div>

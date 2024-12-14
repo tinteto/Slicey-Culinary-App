@@ -13,7 +13,7 @@ const routes: Routes = [
     loadChildren: () => import('./user/user.module').then((module) => module.UserModule) //lazy Module
   },
   {path: 'about', component: AboutComponent},
-  {path: 'contacts', component: ContactsComponent}, //TODO implement contacts component
+  {path: 'contacts', component: ContactsComponent},
   {path: 'error', component: ErrorComponent},
   {path: '**', redirectTo: '/404'},
   {path: '404', component: PageNotFoundComponent},

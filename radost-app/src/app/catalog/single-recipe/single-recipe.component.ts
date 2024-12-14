@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { Comment } from 'src/app/types/comment';
@@ -14,14 +14,15 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class SingleRecipeComponent implements OnInit {
   recipe = {} as Recipe;
-  comments: Comment[] = [];
+ comments: Comment[] | null = [];
 
   showEditRecipeForm: boolean = false;
+  showCommentSection: boolean = false;
 
   recipeDetails: RecipeDetails = {
     name: '',
-    ingredients: '',
-    steps: '',
+    ingredients: '', 
+    steps: '', 
     img: '',
   };
 
@@ -41,40 +42,55 @@ get ownerId(): string {
 }
 
 
-
 constructor(private formBuilder: FormBuilder, private userService: UserService, private apiService: ApiService, private activatedRoute: ActivatedRoute, private router: Router) {}
 
   
   ngOnInit(): void {
-   // debugger;
  
-    this.activatedRoute.params.subscribe((data) => {
+  this.activatedRoute.params.subscribe((data) => {
     const id = data['id']; 
 
     this.apiService.getSingleRecipeById(id).subscribe((recipe) => {
     console.log(recipe);
         this.recipe = recipe;
-        
-      });
+       
+    const {name, ingredients, steps, img } = this.recipe;
+    const ingredientsString = ingredients.toString();
+    const stepsString = steps.toString();
+       
+    this.form.controls.name.setValue(name);
+    this.form.controls.img.setValue(img);
+    this.form.controls.ingredients.setValue(ingredientsString);
+    this.form.controls.steps.setValue(stepsString);
+});
+
+//TODO COMMENTS
+  this.apiService.getAllCommentsForARecipe(id).subscribe((comment) => {
+  console.log(comment);
+  });
+});
+}
 
 
-    this.apiService.getAllCommentsForARecipe(id).subscribe((comments) => {
-    console.log(comments); //TODO COMMENTS
-  
-    });
-
-   //!TODO EDIT VALUES 
-    // const {name, ingredients, steps, img } = this.recipeDetails;
-    // this.recipeDetails = {
-    // name,
-    // ingredients, 
-    // steps,
-    // img,
-    // };
-    // this.form.setValue({name, ingredients, steps, img}); //в HTML-a да се добави [value]
 
 
-    });
+addComment(form: NgForm): void {
+if(form.invalid) {
+  return;
+}
+
+const content = form.value.comment; //{comment: Strahotna e!}
+
+this.activatedRoute.params.subscribe((data => {
+  const id = data['id'];
+
+
+  this.apiService.postComment(id, content).subscribe((comment) => {
+    this.comments?.push(comment as any);  //TODO след тогъла да се запишат коментарите в секцията с коментарите
+    this.onToggleComment();
+    console.log(this.comments);
+   });
+}))
 }
 
 
@@ -83,27 +99,24 @@ const isUserOwner = recipe._ownerId === this.userService.user?._id;
 return isUserOwner;
 }
 
-// getAllCommentsForARecipe(id: string) {
-//   return this.http.get<Recipe>(`${apiUrl}/data/comments?where=recipeId%3D%22${id}%22`);
-// }
-
 
 onDeleteRecipe(): void {
     this.activatedRoute.params.subscribe((data) => {
       const id = data['id'];
 
-      alert('Are you sure you want to delete this recipe?');
-
       this.apiService.deleteRecipe(id).subscribe(() => {
         this.router.navigate(['/recipes']);
       })
     })
-
 }
 
 
-onToggle(): void {
+onToggleEdit(): void {
   this.showEditRecipeForm = !this.showEditRecipeForm;
+}
+
+onToggleComment(): void {
+  this.showCommentSection = !this.showCommentSection;
 }
 
 updateRecipeHandler(): void {
@@ -114,23 +127,24 @@ updateRecipeHandler(): void {
   this.activatedRoute.params.subscribe((data) => {
   const id = data['id'];
 
+  
   this.recipeDetails = this.form.value as RecipeDetails;
   const {name, ingredients, steps, img} = this.recipeDetails;
 
-  this.apiService.updateRecipe(id, name, ingredients, steps, img).subscribe(() => {
-    this.onToggle();
+
+  this.apiService.updateRecipe(id, name, ingredients, steps, img).subscribe((recipe) => {
+    console.log(recipe); //на update изпраща ingredients и steps като обекти
+  
+    this.recipe = recipe;
+    this.onToggleEdit();
   })
 })
-
- 
-
 }
 
 
 onCancelEditRecipe(event: Event) {
   event.preventDefault();
-  this.onToggle();
-
+  this.onToggleEdit();
 }
 }
 

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   form = this.formBuilder.group({
-    email: ['', [Validators.required, Validators.pattern('[A-Za-z0-9.-]+@[a-zA-Z0-9.-]+\.(com|bg|org)')]], //TODO fix regexp
+    email: ['', [Validators.required, Validators.pattern('[A-Za-z0-9.-]+@[a-zA-Z0-9.-]+\.(com|bg|org)')]], 
     password: ['', [Validators.required]], //Validators.pattern('[A-Z]+[a-z]+[0-9]+')
   })
 

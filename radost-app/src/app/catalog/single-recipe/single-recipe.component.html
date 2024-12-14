@@ -5,13 +5,13 @@
  <!-- HEADER IMAGE -->
   <ng-container *ngIf="!showEditRecipeForm">
     <figure>
-      <img class="header-img" src="./../../../assets/photos/lasagna.jpg" alt="RecipeImg">
+      <img class="header-img" src="{{recipe.img}}" alt="RecipeImg"> 
     </figure>
 
     <!-- MAIN CONTENT -->
     <main class="main-content">
-      <p>Recipe created on: {{recipe._createdOn | date }}</p>
-      <h1 class="content-title">{{recipe.name}}</h1> <!--name of the recipe-->
+      <p>Created on: {{recipe._createdOn | momentPipe }}</p>
+      <h1 class="content-title">{{recipe.name }}</h1> <!--name of the recipe-->
       <p>
         An easy and quick dish, perfect for any meal. This classic recipe combines easy to access products prepared to perfection, optionally accompanied by your choice of wine, or other suitable beverage. Enjoy!
       </p>
@@ -33,9 +33,9 @@
       <!-- INGREDIENTS -->
       <article class="ingredients">
         <h2>Ingredients</h2>
-        <ul *ngFor="let ingredient of recipe.ingredients"> <!-- *ngFor="let ingredient of recipe.ingredients"-->
+        <ul > <!-- *ngFor="let ingredient of recipe.ingredients"-->
           <li>
-            <p> {{ingredient}} </p>
+            <p> {{ recipe.ingredients}} </p>
           </li>
         </ul>
       </article>
@@ -43,10 +43,10 @@
       <!-- INSTRUCTIONS -->
       <article class="instructions">
         <h2>Instructions</h2>
-        <ul *ngFor="let step of recipe.steps"> <!-- *ngFor="let step of recipe.steps"-->
+        <ul> <!-- *ngFor="let step of recipe.steps"-->
           <li>
             <div>
-              <p>{{step}}</p>
+              <p>{{ recipe.steps }}</p>
             </div>
           </li>
         </ul>
@@ -56,27 +56,47 @@
 <!-- BUTTONS -->
     <div class="buttons">
     <button *ngIf="isLoggedIn && isOwner(recipe)"
-    class="editRecipe" (click)="onToggle()">Edit Recipe</button>
+    class="editRecipe" (click)="onToggleEdit()" style="background-color: #FF6B6D">Edit Recipe</button>
 
     <button *ngIf="isLoggedIn && isOwner(recipe)"
-    class="deleteRecipe" (click)="onDeleteRecipe()">Delete Recipe</button>
-    </div>
+    class="deleteRecipe" (click)="onDeleteRecipe()" style="background-color: #04AA6D">Delete Recipe</button>
+    
+    <button *ngIf="isLoggedIn"
+    class="commentRecipe" (click)="onToggleComment()" style="background-color: #04AA6D">Add Comment</button>
+  
+  </div>
 
 
-<div class="commentSection" > <!--TODO COMMENT SECTION-->
+  <!--TODO COMMENT VISUALISATION SECTION -->
+ <div class="commentSection" >
   <div class="title">
    <h4>Comments for {{recipe.name}}:</h4>
   </div>
+  <div class="userComments">
   <header>
-    <p> posted a comment:</p>
+    <p>--Name of the user who posted a comment-- - posted a comment:</p>
   </header>
   <div class="commentContent">
-    <p></p>
+    <p>Comment content here</p>
+  </div>
+</div>
+</div>
+
+
+<ng-container *ngIf="showCommentSection">
+<div class="writeComment">
+  <p>--Name of the user here-- commented:</p>
+  <div class="addComment">
+    <form #form="ngForm" (ngSubmit)="addComment(form)">
+      <textarea type="text" name="comment" id="comment" cols="40" rows="20" ngModel #textAreaComment="ngModel" required></textarea>
+      <button>Add Comment</button>
+      <!--TODO validations and button css-->
+    </form>
   </div>
 </div>
 </ng-container>
 
-
+</ng-container>
 
 
 
@@ -85,7 +105,6 @@
   <ng-container *ngIf="showEditRecipeForm">
     <form [formGroup]="form" (ngSubmit)="updateRecipeHandler()">
       
-  
       <div>
         <p>Recipe Name:</p>
         <input type="text" name="name" id="name" [value]="recipeDetails.name" formControlName="name">
@@ -110,11 +129,12 @@
         <p>Ingredients:</p>
         <textarea type="text" name="ingredients" id="ingredients" placeholder="Enter all ingredients required..." [value]="recipeDetails.ingredients" formControlName="ingredients" ></textarea>
       </div>
+       <!-- ingredients validations-->
       <ng-container *ngIf="form.get('ingredients')?.touched">
         <p *ngIf="form.get('ingredients')?.errors?.['required']" style="color: rgb(255, 51, 0)">Enter all ingredients required!</p>
         <p *ngIf="form.get('ingredients')?.errors?.['minlength']" style="color: rgb(255, 51, 0)">Ingredients text should be at least 10 characters long!</p>
       </ng-container>
-      <!-- ingredients validations-->
+     
 
       <div>
         <p>Instructions</p>
@@ -127,9 +147,10 @@
       </ng-container>
 
       <!--ACTIONS-->
-      <button class="cancelEdit" (click)="onCancelEditRecipe($event)">Cancel</button>
-      <button class="saveChanges" [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? '#f44336' : '#04AA6D'}">Save Changes</button>
+      <button class="cancel" (click)="onCancelEditRecipe($event)" style="background-color: #FF6B6D">Cancel</button>
+      <button type="submit" class="saveChanges" [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? '#FF6B6D' : '#04AA6D'}">Save Changes</button>
 
+    
     </form>
   </ng-container>
 

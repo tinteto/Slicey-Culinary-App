@@ -6,6 +6,7 @@ import { RecipeCollectionComponent } from './recipe-collection/recipe-collection
 import { CatalogRoutingModule } from './catalog-routing.module';
 import { MainComponent } from './main/main.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -18,7 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MainComponent,
   ],
   imports: [
-    CommonModule, CatalogRoutingModule, FormsModule, ReactiveFormsModule, //import SharedModule
+    CommonModule, CatalogRoutingModule, SharedModule, FormsModule, ReactiveFormsModule, //import SharedModule
   ]
 })
 export class CatalogModule { }
