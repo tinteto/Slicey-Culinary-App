@@ -3,7 +3,7 @@
 <div class="container">
     <ng-container *ngIf="!showEditProfile">
     <div class="card">
-        <img src="./../../../assets/noah-buscher-sIFM-1UFSb0-unsplash.jpg" alt="ProfilePicture" style="width:100%">
+        <img src="./../../../assets/rachel-kelli-MLhzDGWnKPk-unsplash.jpg" alt="ProfilePicture" style="width:100%">
         <p>Name:</p>
         <h2>{{userProfileDetails.username}}</h2>
 
@@ -23,6 +23,7 @@
 <ng-container *ngIf="showEditProfile">
 <form [formGroup]="form" (ngSubmit)="updateProfileHandler()" >
 <div class="card">
+    <img src="./../../../assets/rachel-kelli-MLhzDGWnKPk-unsplash.jpg" alt="ProfilePicture" style="width:100%">
 
     <p>Name:</p>
     <input type="text" name="username" id="username" formControlName="username" [value]="userProfileDetails.username"/>
@@ -31,13 +32,6 @@
         <p *ngIf="form.get('username')?.errors?.['minlength']" style="color: rgb(255, 51, 0)">Name should be at least 2 characters!</p>
         <p *ngIf="form.get('username')?.errors?.['maxlength']" style="color: rgb(255, 51, 0)">Name should not exceed 12 characters!</p>
     </ng-container>
-
-
- <!--  <p>More about me:</p>
-    <textarea type="text" name="additionalInfo" id="additionalInfo" rows="3" formControlName="additionalInfo"></textarea>
-    <ng-container>
-        <p *ngIf="form.get('additionalInfo')?.errors?.['maxlength']">Additional information should not exceed 100 characters!</p>
-    </ng-container> --> 
 
 
     <p>Contact me here:</p>

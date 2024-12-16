@@ -1,6 +1,15 @@
 /* Bordered form */
+
+.loginContainer {
+ max-width: 40%;
+ margin: 0 auto;
+ padding: 30px;
+}
+
+
 form {
     border: 3px solid #f1f1f1;
+    padding: 4px;
   }
   
   /* Full-width inputs */
@@ -29,12 +38,6 @@ button {
     opacity: 0.8;
   }
   
-  /* Extra style for the cancel button (red) */
-  .cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
-  }
 
   /* Center the avatar image inside this container */
 .imgcontainer {
@@ -44,7 +47,7 @@ button {
   
   /* Avatar image */
   img.avatar {
-    width: 40%;
+    width: 60%;
     border-radius: 50%;
   }
   
@@ -58,8 +61,5 @@ button {
     span.psw {
       display: block;
       float: none;
-    }
-    .cancelbtn {
-      width: 100%;
     }
   }

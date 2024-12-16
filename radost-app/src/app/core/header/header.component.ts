@@ -25,27 +25,21 @@ export class HeaderComponent {
   }
 
 
-
-
-
-onSearch(form: NgForm): void { //TODO - NOT WORKING PROPERLY
- // debugger;
-  if(form.invalid) {
-    return;
-  }
-  const query = this.search;  //in HTML - [(ngModel)]="search"   //form.control.value;
-  console.log(query); //{}
+// onSearch(form: NgForm): void { //TODO - NOT WORKING PROPERLY
+//  // debugger;
+//   if(form.invalid) {
+//     return;
+//   }
+//   const query = this.search;  //in HTML - [(ngModel)]="search"   //form.control.value;
+//   console.log(query); //{}
   
-  this.apiService.searchRecipe(query).subscribe(() => {
-    this.router.navigate(['/recipes'], {queryParams: {search: query}});
-    //http://localhost:3030/data/recipes?where=name%20LIKE%20%22lasagna%22
-  });
-}
+//   this.apiService.searchRecipe(query).subscribe(() => {
+//     this.router.navigate(['/recipes'], {queryParams: {search: query}});
+//     //http://localhost:3030/data/recipes?where=name%20LIKE%20%22lasagna%22
+//   });
+// }
 
  
-
-
-
 
   logout() {
     this.userService.logout().subscribe({

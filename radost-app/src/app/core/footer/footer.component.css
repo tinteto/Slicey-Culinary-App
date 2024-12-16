@@ -1,13 +1,38 @@
-.containerFooter {
-    max-width: 80%;
-    margin: 0 auto;
-    text-align: center;
+.app-footer {
+    margin: 40px 0px 2px 2px;
 }
 
+
+
 .app-footer {
-    background-color: rgb(112, 111, 111);
-    color: white;
-    font-size: 10px;
+    background-color: #facdce;
+    color: black;
+    font-size: 20px;
     padding: 8px 0px;
 }
+
+.app-logo a {
+   text-decoration: none;
+   font-size: 30px;
+   font-style: italic;
+   letter-spacing: 2px;
+   color: black;
+   font-weight: bold;
+}
+
+.infoSection ul {
+    padding: 10px 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none outside;    
+    gap: 30px;
+}
+.infoSection ul a{
+    color: black;
+    font-weight: bold;
+}
+
+
+
 

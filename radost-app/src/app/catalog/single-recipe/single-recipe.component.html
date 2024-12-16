@@ -1,35 +1,20 @@
 <div class="container">
-  <div class="recipeDetails">
+<div class="recipeDetails">
    
 <!--!READ ONLY MODE-->
  <!-- HEADER IMAGE -->
-  <ng-container *ngIf="!showEditRecipeForm">
+<ng-container *ngIf="!showEditRecipeForm">
+    <!-- MAIN CONTENT -->
+  <div class="recipeContent">
+     <main class="main-content">
     <figure>
       <img class="header-img" src="{{recipe.img}}" alt="RecipeImg"> 
     </figure>
-
-    <!-- MAIN CONTENT -->
-    <main class="main-content">
       <p>Created on: {{recipe._createdOn | momentPipe }}</p>
       <h1 class="content-title">{{recipe.name }}</h1> <!--name of the recipe-->
       <p>
         An easy and quick dish, perfect for any meal. This classic recipe combines easy to access products prepared to perfection, optionally accompanied by your choice of wine, or other suitable beverage. Enjoy!
       </p>
-      <!-- PREPARATION TIME
-      <article class="preparation">
-        <h2>Preparation time</h2>
-        <ul>
-          <li>
-            <p><strong>Total</strong>: Approximately 10 minutes</p>
-          </li>
-          <li>
-            <p><strong>Preparation</strong>: 5 minutes</p>
-          </li>
-          <li>
-            <p><strong>Cooking</strong>: 5 minutes</p>
-          </li>
-        </ul>
-      </article>  -->
       <!-- INGREDIENTS -->
       <article class="ingredients">
         <h2>Ingredients</h2>
@@ -52,56 +37,65 @@
         </ul>
       </article>
       <hr>
-    </main>
-<!-- BUTTONS -->
-    <div class="buttons">
+     </main>
+
+
+    <!--BUTTONS AND COMMENTS-->
+     <div class="buttonsAndcomments">
+     <!-- BUTTONS -->
     <button *ngIf="isLoggedIn && isOwner(recipe)"
     class="editRecipe" (click)="onToggleEdit()" style="background-color: #FF6B6D">Edit Recipe</button>
-
     <button *ngIf="isLoggedIn && isOwner(recipe)"
-    class="deleteRecipe" (click)="onDeleteRecipe()" style="background-color: #04AA6D">Delete Recipe</button>
-    
+    class="deleteRecipe" (click)="onDeleteRecipe()" style="background-color: #FF6B6D">Delete Recipe</button>
     <button *ngIf="isLoggedIn"
-    class="commentRecipe" (click)="onToggleComment()" style="background-color: #04AA6D">Add Comment</button>
+    class="commentRecipe" (click)="onToggleComment()" style="background-color: #04AA6D">Show Add Comment Section</button> <!--TODO да се скрива-->
   
-  </div>
 
 
-  <!--TODO COMMENT VISUALISATION SECTION -->
- <div class="commentSection" >
-  <div class="title">
-   <h4>Comments for {{recipe.name}}:</h4>
-  </div>
-  <div class="userComments">
-  <header>
-    <p>--Name of the user who posted a comment-- - posted a comment:</p>
-  </header>
-  <div class="commentContent">
-    <p>Comment content here</p>
-  </div>
+    <!--COMMENTS FORM-->
+    <ng-container *ngIf="showCommentSection">
+     <div class="writeComment">
+     <div class="addComment">
+      <form class="commentForm" #form="ngForm" (ngSubmit)="addComment(form)">
+        <textarea type="text" name="comment" id="comment" cols="15" rows="5" ngModel #textAreaComment="ngModel" required></textarea>
+        <button class="commentRecipe">Add Comment</button>
+        <!--TODO validations and button css-->
+      </form>
+      </div>
+      </div>
+    </ng-container>
+
+    <!--COMMENTS-->
+    <div class="commentSection" >
+    <div class="title">
+      <h4>Comments for {{recipe.name}}:</h4>
+    </div>
+    <div class="userComments" *ngFor="let comment of comments">
+    <header>
+      <p>{{recipe._ownerId}} commented:</p> <!--TODO-->
+    </header>
+    <div class="commentContent">
+      <p>{{comment.content}}</p>
+    </div>
 </div>
 </div>
 
-
-<ng-container *ngIf="showCommentSection">
-<div class="writeComment">
-  <p>--Name of the user here-- commented:</p>
-  <div class="addComment">
-    <form #form="ngForm" (ngSubmit)="addComment(form)">
-      <textarea type="text" name="comment" id="comment" cols="40" rows="20" ngModel #textAreaComment="ngModel" required></textarea>
-      <button>Add Comment</button>
-      <!--TODO validations and button css-->
-    </form>
+  
+     </div>
   </div>
-</div>
 </ng-container>
 
-</ng-container>
+
+
+
+
+
 
 
 
 
   <!--!EDIT MODE-->
+<div class="editContainer">
   <ng-container *ngIf="showEditRecipeForm">
     <form [formGroup]="form" (ngSubmit)="updateRecipeHandler()">
       
@@ -127,7 +121,7 @@
 
       <div>
         <p>Ingredients:</p>
-        <textarea type="text" name="ingredients" id="ingredients" placeholder="Enter all ingredients required..." [value]="recipeDetails.ingredients" formControlName="ingredients" ></textarea>
+        <textarea type="text" name="ingredients" id="ingredients" rows="5" placeholder="Enter all ingredients required..." [value]="recipeDetails.ingredients" formControlName="ingredients" ></textarea>
       </div>
        <!-- ingredients validations-->
       <ng-container *ngIf="form.get('ingredients')?.touched">
@@ -138,7 +132,7 @@
 
       <div>
         <p>Instructions</p>
-        <textarea type="text" name="steps" id="steps" placeholder="Enter all steps that should be followed..." [value]="recipeDetails.steps" formControlName="steps" ></textarea>
+        <textarea type="text" name="steps" id="steps" rows="5" placeholder="Enter all steps that should be followed..." [value]="recipeDetails.steps" formControlName="steps" ></textarea>
       </div>
       <!--steps validations-->
       <ng-container *ngIf="form.get('steps')?.touched">
@@ -147,15 +141,15 @@
       </ng-container>
 
       <!--ACTIONS-->
-      <button class="cancel" (click)="onCancelEditRecipe($event)" style="background-color: #FF6B6D">Cancel</button>
       <button type="submit" class="saveChanges" [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? '#FF6B6D' : '#04AA6D'}">Save Changes</button>
-
+      <button class="cancel" (click)="onCancelEditRecipe($event)" style="background-color: #FF6B6D">Cancel</button>
     
     </form>
   </ng-container>
+</div>
 
-  </div>
-  </div>
+</div>
+</div>
 
 
 

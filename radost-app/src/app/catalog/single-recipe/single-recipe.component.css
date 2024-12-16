@@ -1,10 +1,39 @@
 /* Bordered form */
+.container {
+ padding: 20px;
+}
+
+div.recipeContent {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.main-content {
+    max-width: 70%;
+}
+
+.buttonsAndcomments {
+   max-width: 30%;
+}
+
+
+
+/* Bordered form */
 form {
     border: 3px solid #f1f1f1;
-  }
+    padding: 16px;
+    margin: 0 auto;
+    max-width: 40%;
+} 
+
+.commentForm {
+    max-width: 100%;
+    padding: 16px;
+}
   
   /* Full-width inputs */
-  input[type=text], input[type=password] {
+  input[type=text], input[type=password], textarea[type=text] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -36,21 +65,9 @@ button {
     background-color: #f44336;
   }
 
-  /* Center the avatar image inside this container */
-.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-  }
-  
-  /* Avatar image */
-  img.avatar {
-    width: 40%;
-    border-radius: 50%;
-  }
-  
-  /* Add padding to containers */
-  .container {
-    padding: 16px;
+  .header-img {
+    max-width: 40%;
+    border-radius: 5px;
   }
 
   /* Change styles for span and cancel button on extra small screens */
@@ -65,8 +82,7 @@ button {
   }
 
 
-
-/* GENERAL STYLES */
+/* GENERAL STYLES 
 :root {
     --nutmeg: hsl(14, 45%, 36%);
     --dark-raspberry: hsl(332, 51%, 32%);
@@ -98,7 +114,7 @@ body {
     background-color: var(--eggshell);
 }
 
-/* STYLES */
+/* STYLES 
 .container {
     width: 100%;
     max-width: 736px;
@@ -122,7 +138,6 @@ body {
 
 .header-img {
     width: 100%;
-    margin-top: 2.5rem;
     border-radius: .8rem;
 }
 
@@ -186,7 +201,7 @@ p:first-of-type {
 
 .preparation p {
     margin-left: 1rem;
-    /* line-height: .9rem; */
+    /* line-height: .9rem; 
 }
 
 .ingredients h2,
@@ -274,7 +289,7 @@ hr {
     color: var(--nutmeg);
 }
 
-/* MEDIA QUERY */
+/* MEDIA QUERY 
 @media screen and (max-width: 768px) {
     body {
         min-height: fit-content;
@@ -305,4 +320,4 @@ hr {
         font-size: 2rem;
         line-height: 2.3rem;
     }
-}
+} */

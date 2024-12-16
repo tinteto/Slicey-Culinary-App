@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
-import { ContactsComponent } from './contacts/contacts.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CoreModule } from './core/core.module';
 import { UserModule } from './user/user.module';
@@ -19,7 +18,6 @@ import { UserAuthComponent } from './user-auth/user-auth.component';
   declarations: [
     AppComponent,
     AboutComponent,
-    ContactsComponent,
     PageNotFoundComponent,
     UserAuthComponent,
    ],

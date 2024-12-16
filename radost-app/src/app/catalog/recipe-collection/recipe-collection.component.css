@@ -1,15 +1,32 @@
+.recipeContainer {
+  margin: 0 auto;
+  max-width: 90%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+ 
+}
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 300px;
     margin: auto;
     text-align: center;
     font-family: arial;
-  }
-  
-  .date {
-    color: grey;
-    font-size: 16px;
-  }
+    padding: 10px;
+    border-radius: 3px;
+}
+
+h4 {
+  font-size: 20px;
+  padding: 10px;
+}
+
+.date {
+  font-size: 14px;
+  padding: 10px;
+  color: grey;
+}
   
   .card button {
     border: none;

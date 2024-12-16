@@ -18,8 +18,8 @@ export class ApiService {
     return this.http.get<Recipe[]>(`${apiUrl}/data/recipes`); //получаваме [{}, {}, {}]
   }
 
-  getSingleRecipeById(id: string) {
-    return this.http.get<Recipe>(`${apiUrl}/data/recipes/${id}`);
+  getSingleRecipeById(recipeId: string) {
+    return this.http.get<Recipe>(`${apiUrl}/data/recipes/${recipeId}`);
   }
 
 
@@ -29,14 +29,14 @@ export class ApiService {
   }
   
 
-  updateRecipe(id: string, name: string, ingredients: string, steps: string, img: string  ) { //!!img 
+  updateRecipe(recipeId: string, name: string, ingredients: string, steps: string, img: string  ) { //!!img 
     const payload = { name, ingredients, steps, img };
-    return this.http.put<Recipe>(`${apiUrl}/data/recipes/${id}` , payload); //изпраща данните на сървъра като стринг
+    return this.http.put<Recipe>(`${apiUrl}/data/recipes/${recipeId}` , payload); //изпраща данните на сървъра като стринг
   }
 
 
-  deleteRecipe(id: string) {
-    return this.http.delete<Recipe>(`${apiUrl}/data/recipes/${id}`)
+  deleteRecipe(recipeId: string) {
+    return this.http.delete<Recipe>(`${apiUrl}/data/recipes/${recipeId}`)
   }
 
 
@@ -52,13 +52,13 @@ export class ApiService {
   }
 
 
-  getAllCommentsForARecipe(id: string) {
-    return this.http.get<Recipe>(`${apiUrl}/data/comments?where=recipeId%3D%22${id}%22`);
+  getAllCommentsForARecipe(recipeId: string) {
+    return this.http.get<Comment[]>(`${apiUrl}/data/comments?where=recipeId%3D%22${recipeId}%22`); //?[]
   }
 
-  postComment(id: string, content: string) {
-    const payload = { id, content };
-    return this.http.post<Recipe>(`${apiUrl}/data/comments`, payload);
+  postComment(recipeId: string, content: string) {
+    const payload = { recipeId, content };
+    return this.http.post<Comment>(`${apiUrl}/data/comments`, payload);
   }
 
 

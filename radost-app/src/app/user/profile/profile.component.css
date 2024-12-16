@@ -1,8 +1,9 @@
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 300px;
-    margin: auto;
+    max-width: 40%;
+    margin: 0 auto;
     text-align: center;
+    padding: 15px;
   }
   
   .aboutMe {
@@ -33,11 +34,6 @@
     opacity: 0.7;
   }
 
-
-  /* Bordered form */
-form {
-  border: 3px solid #f1f1f1;
-}
 
 /* Full-width inputs */
 input[type=text], input[type=password] {
@@ -86,7 +82,7 @@ img.avatar {
 
 /* Add padding to containers */
 .container {
-  padding: 16px;
+  padding: 30px;
 }
 
 /* Change styles for span and cancel button on extra small screens */

@@ -1,9 +1,9 @@
 import { Recipe } from "./recipe";
 
 export interface Comment {
-    _ownerId: string,
+    _ownerId: string, //id на създателя на коментара
     content: string,
-    recipeId: string,
-    _createdOn: number,
-    _id: string,
+    recipeId: string, //id на рецептата
+    _createdOn: number, 
+    _id: string, //id на коментара
  }

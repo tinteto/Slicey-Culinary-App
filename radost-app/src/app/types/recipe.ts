@@ -6,7 +6,7 @@ export interface Recipe {
         img: string,
         ingredients: string[],
         steps: string[],
-        comments: Comment[],  //?
+       // comments: Comment[], //? няма коментари на сървъра към рецептите
         _createdOn: number,
         _id: string,   //recipeId
 }

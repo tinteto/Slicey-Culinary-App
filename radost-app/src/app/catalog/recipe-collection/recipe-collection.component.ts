@@ -22,10 +22,8 @@ get isLoggedIn(): boolean {
  ngOnInit(): void {
   this.apiService.getAllRecipes().subscribe((recipes) => {
     console.log(recipes);
-    
     this.recipes = recipes;
-
-    }
+  }
   )
 }
 

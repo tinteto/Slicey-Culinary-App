@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font: 17px/1.5 Garamond, sans-serif;
+}
+
+body {
+    padding: 2px;
+}
+
+body,
+form,
+input,
+textarea,
+button {
+  font: inherit;
+}
+

@@ -1,19 +1,21 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
   }
   
-  html {
-    box-sizing: border-box;
-  }
-  
+
   *, *:before, *:after {
     box-sizing: inherit;
   }
   
+  .row {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  padding: 30px 0px;
+  }
+
   .column {
-    float: left;
-    width: 33.3%;
+    max-width: 30%;
     margin-bottom: 16px;
     padding: 0 8px;
   }
@@ -21,17 +23,32 @@ body {
   .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin: 8px;
+    border-radius: 5px;
   }
   
   .about-section {
-    padding: 50px;
+    padding: 100px;
     text-align: center;
-    background-color: #474e5d;
-    color: white;
+    background-color: #facdce;
+    color: black;
+  }
+
+  .about-section h1 {
+    font-size: 50px;
+    font-style: italic;
+  }
+
+  .about-section p {
+    font-size: 25px;
   }
   
   .container {
-    padding: 0 16px;
+    padding: 10px 16px;
+  }
+
+  .container p {
+    font-size: 18px;
+    padding: 5px;
   }
   
   .container::after, .row::after {
@@ -40,25 +57,17 @@ body {
     display: table;
   }
   
-  .title {
+  p.title {
+    padding: 0px;
     color: grey;
   }
-  
-  .button {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 8px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
+
+  p.email {
+    font-style: italic;
   }
   
-  .button:hover {
-    background-color: #555;
-  }
+
+ 
   
   @media screen and (max-width: 650px) {
     .column {

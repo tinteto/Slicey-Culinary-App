@@ -14,7 +14,7 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class SingleRecipeComponent implements OnInit {
   recipe = {} as Recipe;
- comments: Comment[] | null = [];
+  comments: Comment[] | null = [];
 
   showEditRecipeForm: boolean = false;
   showCommentSection: boolean = false;
@@ -48,7 +48,9 @@ constructor(private formBuilder: FormBuilder, private userService: UserService, 
   ngOnInit(): void {
  
   this.activatedRoute.params.subscribe((data) => {
-    const id = data['id']; 
+    const id = data['recipeId']; //id-то на рецептата
+    console.log(id);
+    
 
     this.apiService.getSingleRecipeById(id).subscribe((recipe) => {
     console.log(recipe);
@@ -64,14 +66,16 @@ constructor(private formBuilder: FormBuilder, private userService: UserService, 
     this.form.controls.steps.setValue(stepsString);
 });
 
+
 //TODO COMMENTS
-  this.apiService.getAllCommentsForARecipe(id).subscribe((comment) => {
-  console.log(comment);
+  this.apiService.getAllCommentsForARecipe(id).subscribe((comments) => {
+ console.log(comments);   
+ 
+this.comments = comments as any;
+ //TODO тук трябва да се запишат в коментарите
   });
 });
 }
-
-
 
 
 addComment(form: NgForm): void {
@@ -82,16 +86,14 @@ if(form.invalid) {
 const content = form.value.comment; //{comment: Strahotna e!}
 
 this.activatedRoute.params.subscribe((data => {
-  const id = data['id'];
+  const id = data['recipeId'];
 
 
-  this.apiService.postComment(id, content).subscribe((comment) => {
-    this.comments?.push(comment as any);  //TODO след тогъла да се запишат коментарите в секцията с коментарите
+  this.apiService.postComment(id, content).subscribe(() => { //!Запазват се на сървъра като масив от обекти [{}]
     this.onToggleComment();
-    console.log(this.comments);
-   });
+  });
 }))
-}
+};
 
 
 isOwner(recipe: Recipe): boolean {
@@ -102,7 +104,7 @@ return isUserOwner;
 
 onDeleteRecipe(): void {
     this.activatedRoute.params.subscribe((data) => {
-      const id = data['id'];
+      const id = data['recipeId'];
 
       this.apiService.deleteRecipe(id).subscribe(() => {
         this.router.navigate(['/recipes']);
@@ -125,7 +127,7 @@ updateRecipeHandler(): void {
   }
 
   this.activatedRoute.params.subscribe((data) => {
-  const id = data['id'];
+  const id = data['recipeId'];
 
   
   this.recipeDetails = this.form.value as RecipeDetails;

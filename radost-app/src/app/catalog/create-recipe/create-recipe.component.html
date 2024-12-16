@@ -7,6 +7,7 @@
         <input 
         type="text" 
         name="name"
+        placeholder="Enter recipe name..."
         ngModel
         #inputRecipeName="ngModel"
         required
@@ -31,8 +32,8 @@
         type="text" 
         name="ingredients" 
         id="ingredients" 
-        placeholder="Enter all ingredients required on separate lines..."
-        rows="10"
+        placeholder="Enter all ingredients required..."
+        rows="5"
         ngModel
         #textAreaIngredients="ngModel"
         required
@@ -51,8 +52,8 @@
        type="text" 
        name="steps" 
        id="steps" 
-       rows="10" 
-       placeholder="Enter all instructions required on separate lines..."
+       rows="5" 
+       placeholder="Enter all instructions required..."
        ngModel
        #textAreaStepsName="ngModel"
        required
@@ -67,8 +68,8 @@
 
     <!--RECIPE BUTTONS-->
     <div class="create-recipe-buttons">
-        <button class="cancel" (click)="onCancel($event)" style="background-color: #FF6B6D">Cancel</button>
         <button type="submit" class="create" [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? '#FF6B6D' : '#04AA6D'}">Create recipe</button>
+        <button class="cancel" (click)="onCancel($event)" style="background-color: #FF6B6D">Cancel</button>
     </div>
 
 </form>
