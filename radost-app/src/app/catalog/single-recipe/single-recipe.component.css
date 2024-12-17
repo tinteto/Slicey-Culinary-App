@@ -1,46 +1,108 @@
 /* Bordered form */
-.container {
- padding: 20px;
-}
-
-div.recipeContent {
+.recipeContent {
+    padding: 40px 30px;
+    max-width: 100%;
+    height: 100vh;
     display: flex;
     justify-content: space-between;
 }
 
-
-.main-content {
-    max-width: 70%;
+.editContainer {
+  padding: 30px;
 }
 
-.buttonsAndcomments {
-   max-width: 30%;
+
+.recipeDetails {
+    max-width: 90%;
+    height: 100vh;
 }
 
+
+.imageAndRecipeName {
+    display: flex;
+    gap: 50px;
+}
+
+.furtherDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px 20px;
+}
+
+.recipeTitle h1 {
+    font-size: 40px;
+    font-style: italic;
+}
+
+.ingredients h2, .instructions h2{
+    font-size: 30px;
+    font-style: italic;
+}
+
+.ingredients p, .instructions p {
+ padding: 10px 0px;
+ font-size: 18px;
+}
+
+.header-img {
+    display: block;
+    max-width: 600px;
+    max-height: 600px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgb(71, 70, 70);
+}
+
+p.date {
+    font-size: 18px;
+    color: grey;
+}
+
+.commentForm {
+    max-width: 100%;
+    padding: 16px;
+}
+
+.recipeName h4 {
+    margin: 10px 0px;
+    font-size: 18px; 
+    color: rgb(83, 82, 82);
+    padding: 10px 4px;   
+}
+
+.commentsSection {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+}
+
+.userComment {
+    padding: 20px;
+    border: 2px solid #04AA6D;
+    border-radius: 5px;   
+    color: rgb(83, 82, 82);
+}
 
 
 /* Bordered form */
-form {
+.editForm {
     border: 3px solid #f1f1f1;
     padding: 16px;
     margin: 0 auto;
     max-width: 40%;
 } 
 
-.commentForm {
-    max-width: 100%;
-    padding: 16px;
-}
+
   
   /* Full-width inputs */
-  input[type=text], input[type=password], textarea[type=text] {
+input[type=text], input[type=password], textarea[type=text] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-  }
+}
 
   /* Set a style for all buttons */
 button {
@@ -51,7 +113,7 @@ button {
     border: none;
     cursor: pointer;
     width: 100%;
-  }
+}
   
   /* Add a hover effect for buttons */
   button:hover {
@@ -65,10 +127,7 @@ button {
     background-color: #f44336;
   }
 
-  .header-img {
-    max-width: 40%;
-    border-radius: 5px;
-  }
+
 
   /* Change styles for span and cancel button on extra small screens */
   @media screen and (max-width: 300px) {

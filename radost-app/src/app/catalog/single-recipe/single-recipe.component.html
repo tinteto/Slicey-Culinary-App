@@ -1,22 +1,23 @@
 <div class="container">
-<div class="recipeDetails">
+<div class="recipe">
    
 <!--!READ ONLY MODE-->
- <!-- HEADER IMAGE -->
+<!--Main Content-->
 <ng-container *ngIf="!showEditRecipeForm">
-    <!-- MAIN CONTENT -->
   <div class="recipeContent">
-     <main class="main-content">
-    <figure>
-      <img class="header-img" src="{{recipe.img}}" alt="RecipeImg"> 
-    </figure>
-      <p>Created on: {{recipe._createdOn | momentPipe }}</p>
-      <h1 class="content-title">{{recipe.name }}</h1> <!--name of the recipe-->
-      <p>
-        An easy and quick dish, perfect for any meal. This classic recipe combines easy to access products prepared to perfection, optionally accompanied by your choice of wine, or other suitable beverage. Enjoy!
-      </p>
+    <div class="recipeDetails">
+      <div class="imageAndRecipeName">
+        <img class="header-img" src="{{recipe.img}}" alt="RecipeImg"> 
+       <div class="recipeTitle">
+        <h1 class="content-title">{{recipe.name}}</h1> <!--name of the recipe-->
+        <p class="date">from {{recipe._createdOn | momentPipe }}</p>
+       </div>
+      </div>
+
+
+      <div class="furtherDetails">  
       <!-- INGREDIENTS -->
-      <article class="ingredients">
+       <article class="ingredients">
         <h2>Ingredients</h2>
         <ul > <!-- *ngFor="let ingredient of recipe.ingredients"-->
           <li>
@@ -24,9 +25,8 @@
           </li>
         </ul>
       </article>
-      <hr>
       <!-- INSTRUCTIONS -->
-      <article class="instructions">
+       <article class="instructions">
         <h2>Instructions</h2>
         <ul> <!-- *ngFor="let step of recipe.steps"-->
           <li>
@@ -36,25 +36,23 @@
           </li>
         </ul>
       </article>
-      <hr>
-     </main>
+      </div>
+    </div>
 
 
     <!--BUTTONS AND COMMENTS-->
-     <div class="buttonsAndcomments">
+      <div class="buttons">
      <!-- BUTTONS -->
-    <button *ngIf="isLoggedIn && isOwner(recipe)"
-    class="editRecipe" (click)="onToggleEdit()" style="background-color: #FF6B6D">Edit Recipe</button>
-    <button *ngIf="isLoggedIn && isOwner(recipe)"
-    class="deleteRecipe" (click)="onDeleteRecipe()" style="background-color: #FF6B6D">Delete Recipe</button>
-    <button *ngIf="isLoggedIn"
-    class="commentRecipe" (click)="onToggleComment()" style="background-color: #04AA6D">Show Add Comment Section</button> <!--TODO да се скрива-->
-  
-
+    <button *ngIf="isLoggedIn && isOwner(recipe)" class="editRecipe" 
+    (click)="onToggleEdit()" style="background-color: #FF6B6D">Edit Recipe</button>
+    <button *ngIf="isLoggedIn && isOwner(recipe)" class="deleteRecipe" 
+    (click)="onDeleteRecipe()" style="background-color: #FF6B6D">Delete Recipe</button>
+    <button *ngIf="isLoggedIn" class="commentRecipe" 
+    (click)="onToggleComment()" style="background-color: #04AA6D">Show Add Comment Section</button>
+ 
 
     <!--COMMENTS FORM-->
     <ng-container *ngIf="showCommentSection">
-     <div class="writeComment">
      <div class="addComment">
       <form class="commentForm" #form="ngForm" (ngSubmit)="addComment(form)">
         <textarea type="text" name="comment" id="comment" cols="15" rows="5" ngModel #textAreaComment="ngModel" required></textarea>
@@ -62,28 +60,31 @@
         <!--TODO validations and button css-->
       </form>
       </div>
-      </div>
     </ng-container>
 
     <!--COMMENTS-->
-    <div class="commentSection" >
-    <div class="title">
+    <div class="commentsSection" >
+    <div class="recipeName">
       <h4>Comments for {{recipe.name}}:</h4>
     </div>
-    <div class="userComments" *ngFor="let comment of comments">
+    <div class="userComment" *ngFor="let comment of comments">
     <header>
-      <p>{{recipe._ownerId}} commented:</p> <!--TODO-->
+      <h4>🍉 Slicey user commented:</h4> <!--TODO-->
     </header>
     <div class="commentContent">
       <p>{{comment.content}}</p>
     </div>
-</div>
-</div>
+    </div>
+    </div>
 
   
-     </div>
+      </div>
+
   </div>
 </ng-container>
+
+
+
 
 
 
@@ -97,7 +98,7 @@
   <!--!EDIT MODE-->
 <div class="editContainer">
   <ng-container *ngIf="showEditRecipeForm">
-    <form [formGroup]="form" (ngSubmit)="updateRecipeHandler()">
+    <form class="editForm" [formGroup]="form" (ngSubmit)="updateRecipeHandler()">
       
       <div>
         <p>Recipe Name:</p>

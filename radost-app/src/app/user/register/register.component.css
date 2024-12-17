@@ -58,6 +58,17 @@ button:hover {
   clear: both;
   display: table;
 }
+p.fillIn {
+  padding: 5px 2px;
+}
+
+p.signInHere {
+  padding: 10px 2px;
+}
+
+p.signInHere a {
+  color:#04AA6D;
+}
 
 /* Change styles for signup button on extra small screens */
 @media screen and (max-width: 300px) {

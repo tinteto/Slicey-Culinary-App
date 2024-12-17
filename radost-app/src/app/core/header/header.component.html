@@ -9,7 +9,6 @@
             <li><a routerLink="/home">Home</a></li>
             <li><a routerLink="/recipes">Catalog</a></li>
             <li><a routerLink="/create-recipe">Add Recipe</a></li>
-            <li><a routerLink="/about">About</a></li>
            </div>
            
            <div class="profile">
@@ -20,8 +19,8 @@
 
 
         <div class="guest">
-            <li *ngIf="!isLoggedIn"><a routerLink="/auth/login">Sign in</a></li> 
-            <li *ngIf="!isLoggedIn"><a routerLink="/auth/register">Sign up</a></li>  
+            <li *ngIf="!isLoggedIn"><a routerLink="/auth/login">Login</a></li> 
+            <li *ngIf="!isLoggedIn"><a routerLink="/auth/register">Register</a></li>  
         </div>       
            
             <!--TODO search bar right align 

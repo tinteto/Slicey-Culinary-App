@@ -1,33 +1,30 @@
 <!--!to be edited-->
 <main>
+  <div class="container">
     <div class="welcome">
-        <h3>Welcome</h3>
-        <h1>
-        Easy recipes for any occasion!
-        </h1>
+      <div class="headings">
+        <h3>Welcome to Slicey!   <a routerLink="/about"> Read more ➪ </a></h3>
+        <h1>Easy recipes for any occasion!</h1>
         <p>Here you can find recipes for beginners, as well as for true masterchefs. Roll up your sleeves and let's get busy!</p>
         
         <ng-container *ngIf="!isLoggedIn">
         <div class="guest">
           <ul>
             <li>
-            <a routerLink="/auth/login">
-                <i class=""></i>
-                Login
-              </a>
+            <a routerLink="/auth/login">Login</a>
             </li>
             <li>
-              <a routerLink="/auth/register">
-                <i class=""></i>
-            Register
-              </a>
+              <a routerLink="/auth/register">Register</a>
             </li>
           </ul>
         </div>
         </ng-container>
+        <h4>Browse Recipe Collection ⇩</h4>
+      </div>
     </div>
+  </div>
 
-<h2>Browse Recipes</h2>
+
 <div class="recipeContainer">
     <div *ngFor="let recipe of recipes" class="recipes">
     <div class="card">
