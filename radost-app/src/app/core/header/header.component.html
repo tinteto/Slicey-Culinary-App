@@ -1,6 +1,6 @@
 <header class="app-header">
     <div class="app-logo">
-        <a href="#">🍉 Slicey</a>
+        <a routerLink="/recipes">🍉 Slicey</a>
     </div>
     <nav>
         <ul>
@@ -23,7 +23,7 @@
             <li *ngIf="!isLoggedIn"><a routerLink="/auth/register">Register</a></li>  
         </div>       
            
-            <!--TODO search bar right align 
+            <!--TO do search bar
            <div class="search">
             <form #form="ngForm" (ngSubmit)="onSearch(form)">
                 <input type="text" placeholder="Search Recipes" name="search" [(ngModel)]="search" ngModel #inputSearch="ngModel">

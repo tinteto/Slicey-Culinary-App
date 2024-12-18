@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Recipe } from './types/recipe';
 import { environment } from 'src/environments/environment.development';
+import { UserService } from './user/user.service';
 
 const { apiUrl } = environment;
 // const apiUrl = environment.apiUrl;
@@ -14,6 +15,7 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
 
+
   getAllRecipes() {
     return this.http.get<Recipe[]>(`${apiUrl}/data/recipes`); //получаваме [{}, {}, {}]
   }
@@ -23,13 +25,13 @@ export class ApiService {
   }
 
 
-  createNewRecipe(name: string, ingredients: string, steps: string, img: string) { //!!  img
+  createNewRecipe(name: string, ingredients: string, steps: string, img: string) { 
     const payload = { name, ingredients, steps, img };
     return this.http.post<Recipe>(`${apiUrl}/data/recipes`, payload);
   }
   
 
-  updateRecipe(recipeId: string, name: string, ingredients: string, steps: string, img: string  ) { //!!img 
+  updateRecipe(recipeId: string, name: string, ingredients: string, steps: string, img: string  ) { 
     const payload = { name, ingredients, steps, img };
     return this.http.put<Recipe>(`${apiUrl}/data/recipes/${recipeId}` , payload); //изпраща данните на сървъра като стринг
   }
@@ -42,18 +44,9 @@ export class ApiService {
 
 
   //Advanced Retrieval
-  getMostRecentRecipes() {
-    return this.http.get<Recipe[]>(`${apiUrl}/data/recipes?select=_id%2Cname%2Cimg&sortBy=_createdOn%20desc&pageSize=3`);
-  }
-
-
-  searchRecipe(query: string) {
-    return this.http.get<Recipe[]>(`${apiUrl}/data/recipes?where=name%20LIKE%20%22${query}%22`);
-  }
-
-
+  
   getAllCommentsForARecipe(recipeId: string) {
-    return this.http.get<Comment[]>(`${apiUrl}/data/comments?where=recipeId%3D%22${recipeId}%22`); //?[]
+    return this.http.get<Comment[]>(`${apiUrl}/data/comments?where=recipeId%3D%22${recipeId}%22`); //[{}]
   }
 
   postComment(recipeId: string, content: string) {
@@ -62,6 +55,12 @@ export class ApiService {
   }
 
 
+  getMostRecentRecipes() {
+    return this.http.get<Recipe[]>(`${apiUrl}/data/recipes?select=_id%2Cname%2Cimg&sortBy=_createdOn%20desc&pageSize=3`);
+  }
 
 
+  searchRecipe(query: string) {
+    return this.http.get<Recipe[]>(`${apiUrl}/data/recipes?where=name%20LIKE%20%22${query}%22`);
+  }
 }

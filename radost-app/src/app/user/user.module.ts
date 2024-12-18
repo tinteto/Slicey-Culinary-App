@@ -21,7 +21,7 @@ import { SharedModule } from '../shared/shared.module';
     UserRoutingModule, //импортваме си userRoutingModule
     RouterModule, //! задължително импортваме RouterModule
     ReactiveFormsModule,
-    SharedModule, //?
+    SharedModule, 
   ]
 })
 export class UserModule { }

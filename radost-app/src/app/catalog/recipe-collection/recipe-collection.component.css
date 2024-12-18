@@ -1,6 +1,5 @@
 .container {
   max-width: 100%;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,27 +12,29 @@
  }
  
  .headings h1 {
- padding: 40px;
- font-size: 55px;
+ padding-top: 20px;
+ font-size: 50px;
  }
  
  .headings h3 {
+ margin-top: 60px;
  padding: 3px 0px;
  border: 1px solid rgb(200, 199, 199);
  border-radius: 10px;
  color: grey;
- font-size: 25px;
+ font-size: 22px;
  }
 
  .headings h4 {
- margin-top: 50px;
+ padding: 50px 0px 35px 0px;
  color: #04AA6D;
- font-size: 20px;
+ font-size: 25px;
  }
  
  .headings p {
- padding: 0px 0px 50px 0px;
- font-size: 22px;
+ padding: 10px 0px 40px 0px;
+ font-size: 20px;
+ color: rgb(111, 110, 110);
  }
  
  .headings h3 a {
@@ -50,7 +51,9 @@
  .guest ul li {
      list-style: none outside;
  }
+ 
  .guest ul li a {
+   
      font-weight: bold;
      text-decoration: none;
      font-size: 18px;

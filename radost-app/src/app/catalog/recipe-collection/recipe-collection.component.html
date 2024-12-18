@@ -1,9 +1,9 @@
-<!--!to be edited-->
-<main>
+<main class="recipeCatalog">
   <div class="container">
     <div class="welcome">
+      <!--WELCOME MESSAGE-->
       <div class="headings">
-        <h3>Welcome to Slicey!   <a routerLink="/about"> Read more ➪ </a></h3>
+        <h3>Welcome to 🍉 Slicey! <a routerLink="/about"> Read more ➪ </a></h3>
         <h1>Easy recipes for any occasion!</h1>
         <p>Here you can find recipes for beginners, as well as for true masterchefs. Roll up your sleeves and let's get busy!</p>
         
@@ -19,21 +19,19 @@
           </ul>
         </div>
         </ng-container>
-        <h4>Browse Recipe Collection ⇩</h4>
+        <h4> ⇩ Browse Recipe Collection ⇩</h4>
       </div>
     </div>
   </div>
 
-
+<!--RECIPE CATALOG-->
 <div class="recipeContainer">
     <div *ngFor="let recipe of recipes" class="recipes">
     <div class="card">
         <img [src]="recipe.img" alt="RecipeImg" style="width:100%">
         <h4>{{ recipe.name | emoji}}</h4>
-    
-       <!-- <p>{{ recipe.ingredients }}</p> -->
         <p class="date">{{ recipe._createdOn | momentPipe }}</p>
-        <p><button [routerLink]="recipe._id" style="background-color: #04AA6D">View Recipe</button></p> <!-- води към правилната рецепта-->
+        <p><button [routerLink]="recipe._id" style="background-color: #04AA6D">View Recipe</button></p> 
     </div>
     </div>
 </div>

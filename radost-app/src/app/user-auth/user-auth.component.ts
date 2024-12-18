@@ -22,9 +22,6 @@ export class UserAuthComponent implements OnInit {
    complete: () => {
    this.isUserAuthenticating = false;
    }
-    })
-    
-  }
-
-
+  });
+}
 }

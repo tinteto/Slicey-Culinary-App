@@ -1,9 +1,4 @@
-body {
-    margin: 0;
-  }
-  
-
-  *, *:before, *:after {
+*, *:before, *:after {
     box-sizing: inherit;
   }
   
@@ -27,13 +22,14 @@ body {
   }
   
   .about-section {
-    padding: 100px;
+    padding: 40px;
     text-align: center;
     background-color: #facdce;
     color: black;
   }
 
   .about-section h1 {
+    padding: 20px;
     font-size: 50px;
     font-style: italic;
   }
@@ -63,6 +59,10 @@ body {
   }
 
   p.email {
+    font-weight: bold;
+  }
+
+  p.keenEye {
     font-style: italic;
   }
   

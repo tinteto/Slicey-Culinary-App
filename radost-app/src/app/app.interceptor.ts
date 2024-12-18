@@ -5,6 +5,7 @@ import {
   HttpEvent,
   HttpInterceptor,
   HTTP_INTERCEPTORS,
+  HttpHeaders,
 } from '@angular/common/http';
 import { catchError, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
@@ -30,7 +31,7 @@ const token = this.userService.getToken();
   
  //request.url.startsWith('/users')
  //url: request.url.replace('/users', apiUrl),
-  
+
  if (token != null) {
     request = request.clone({
    setHeaders: {'X-Authorization': token }
@@ -45,7 +46,6 @@ if (token && !request.headers.has('Content-Type')) {
 
    console.log(request); //принтира всички заявки, които правим
 
-    //!error handling
     return next.handle(request).pipe(
       catchError((error) => {
         if(error.status === 401) {

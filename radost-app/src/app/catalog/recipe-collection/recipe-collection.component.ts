@@ -10,7 +10,7 @@ import { UserService } from 'src/app/user/user.service';
 })
 
 export class RecipeCollectionComponent implements OnInit {
- recipes: Recipe[] | null = []; //извиквам си рецептите от типа, за да ги разпознае темплейта, когато ги извиквам там
+ recipes: Recipe[] | null = [];
 
 get isLoggedIn(): boolean {
  return this.userService.isLogged;
@@ -23,9 +23,6 @@ get isLoggedIn(): boolean {
   this.apiService.getAllRecipes().subscribe((recipes) => {
     console.log(recipes);
     this.recipes = recipes;
-  }
-  )
+  });
 }
-
-
 }

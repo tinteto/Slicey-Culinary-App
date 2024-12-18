@@ -30,7 +30,7 @@ export class SingleRecipeComponent implements OnInit {
     name: ['', [Validators.required, Validators.minLength(3)]],
     ingredients: ['', [Validators.required, Validators.minLength(10)]],
     steps: ['', [Validators.required, Validators.minLength(10)]],
-    img: [''], //TODO
+    img: ['', [Validators.required]],
   });
 
 get isLoggedIn(): boolean {
@@ -42,20 +42,18 @@ get ownerId(): string {
 }
 
 
+
+
 constructor(private formBuilder: FormBuilder, private userService: UserService, private apiService: ApiService, private activatedRoute: ActivatedRoute, private router: Router) {}
 
   
-  ngOnInit(): void {
- 
+  ngOnInit(): void {  
   this.activatedRoute.params.subscribe((data) => {
     const id = data['recipeId']; //id-то на рецептата
-    console.log(id);
-    
-
+ 
     this.apiService.getSingleRecipeById(id).subscribe((recipe) => {
-    console.log(recipe);
-        this.recipe = recipe;
-       
+    this.recipe = recipe;
+         
     const {name, ingredients, steps, img } = this.recipe;
     const ingredientsString = ingredients.toString();
     const stepsString = steps.toString();
@@ -67,13 +65,10 @@ constructor(private formBuilder: FormBuilder, private userService: UserService, 
 });
 
 
-//TODO COMMENTS
+
   this.apiService.getAllCommentsForARecipe(id).subscribe((comments) => {
- console.log(comments);   
- 
-this.comments = comments as any;
- //TODO тук трябва да се запишат в коментарите
-  });
+  this.comments = comments as any;
+});
 });
 }
 
@@ -88,8 +83,7 @@ const content = form.value.comment; //{comment: Strahotna e!}
 this.activatedRoute.params.subscribe((data => {
   const id = data['recipeId'];
 
-
-  this.apiService.postComment(id, content).subscribe(() => { //!Запазват се на сървъра като масив от обекти [{}]
+  this.apiService.postComment(id, content).subscribe(() => { //[{}]
     this.onToggleComment();
   });
 }))
@@ -101,6 +95,15 @@ const isUserOwner = recipe._ownerId === this.userService.user?._id;
 return isUserOwner;
 }
 
+// areIngredientsArray(recipe: Recipe): boolean {
+//   const isArray = typeof recipe.ingredients === 'object';
+//   return isArray;
+// }
+
+// areInstructionsArray(recipe: Recipe): boolean {
+//   const isArray = typeof recipe.steps === 'object';
+//   return isArray;
+// }
 
 onDeleteRecipe(): void {
     this.activatedRoute.params.subscribe((data) => {
@@ -139,8 +142,8 @@ updateRecipeHandler(): void {
   
     this.recipe = recipe;
     this.onToggleEdit();
-  })
-})
+  });
+});
 }
 
 

@@ -1,15 +1,11 @@
-<!--user Card-->
 
 <div class="container">
     <ng-container *ngIf="!showEditProfile">
+<!--user Card-->
     <div class="card">
         <img src="./../../../assets/rachel-kelli-MLhzDGWnKPk-unsplash.jpg" alt="ProfilePicture" style="width:100%">
         <p>Name:</p>
         <h2>{{userProfileDetails.username}}</h2>
-
-       <!-- <p>More about me:</p>
-        <p class="aboutMe">CEO & Founder, Example</p> -->
-
         <p>Contact me here:</p>
         <h3>{{userProfileDetails.email}}</h3>
 
@@ -25,6 +21,7 @@
 <div class="card">
     <img src="./../../../assets/rachel-kelli-MLhzDGWnKPk-unsplash.jpg" alt="ProfilePicture" style="width:100%">
 
+<!--Profile name-->
     <p>Name:</p>
     <input type="text" name="username" id="username" formControlName="username" [value]="userProfileDetails.username"/>
     <ng-container *ngIf="form.get('username')?.touched">
@@ -33,18 +30,17 @@
         <p *ngIf="form.get('username')?.errors?.['maxlength']" style="color: rgb(255, 51, 0)">Name should not exceed 12 characters!</p>
     </ng-container>
 
-
+<!--Email-->
     <p>Contact me here:</p>
     <input type="text" name="email" id="email" formControlName="email" [value]="userProfileDetails.email" />
-
     <ng-container *ngIf="form.get('email')?.touched">
         <p *ngIf="form.get('email')?.errors?.['required']" style="color: rgb(255, 51, 0)">Email is required!</p>
         <p *ngIf="form.get('email')?.errors?.['pattern']" style="color: rgb(255, 51, 0)">Email is not valid!</p>
     </ng-container>
 
-    <button class="goBack" (click)="onCancel($event)" style="background-color: #FF6B6D">Go Back</button>
+<!--Buttons-->
     <button class="saveProfile"  [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? '#FF6B6D' : '#04AA6D'}">Save Changes</button>
-   
+    <button class="goBack" (click)="onCancel($event)" style="background-color: #FF6B6D">Go Back</button>
 </div>
 </form>
 </ng-container>

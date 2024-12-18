@@ -17,10 +17,8 @@ export class CreateRecipeComponent {
       return;
     }
     
-  console.log(form.value); //връща обект със въведените стойности във формата
-
   const {name, ingredients, steps, img} = form.value; //взимам въведените стойности от формата
-  // const ingredientsArray = ingredients.split('\n'); //TODO това работи, когато подавам масиви "let recipe of..." в темплейта
+  // const ingredientsArray = ingredients.split('\n'); //това работи, когато подавам масиви "let recipe of..." в темплейта
   // const stepsArray = steps.split('\n');
 
 //на създаването на рецептата ги изпращам като масиви ingredients и steps

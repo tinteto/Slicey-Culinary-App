@@ -8,7 +8,6 @@
 <!--Name-->
       <label for="username"><b>Username</b></label>
       <input type="text" placeholder="Enter Username" name="name" formControlName="username">
-
       <ng-container *ngIf="form.get('username')?.touched">
         <p *ngIf="form.get('username')?.errors?.['required']" style="color: rgb(255, 51, 0)">Username is required!</p>
 
@@ -21,7 +20,6 @@
 <!--Email-->
       <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Enter Email" name="email" formControlName="email">
-
       <ng-container *ngIf="form.get('email')?.touched">
         <p *ngIf="form.get('email')?.errors?.['required']" style="color: rgb(255, 51, 0)">Email is required!</p>
 
@@ -29,29 +27,30 @@
       </ng-container>
 
 
-      <!--! продължи оттук нататък-->
+     
 <!-- Password-->
+   <!--! за да се вържем с контролките  get passGroup() -->
  <ng-container formGroupName="passGroup"> 
-  <!--! за да се вържем с контролките  get passGroup() { return this.form.get('passGroup'); }-->
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" formControlName="password">
 <ng-container *ngIf="passGroup?.get('password')?.touched">
       <p *ngIf="passGroup?.get('password')?.errors?.['required']" style="color: rgb(255, 51, 0)">Password is required!</p>
+      
       <p *ngIf="passGroup?.get('password')?.errors?.['minlength']" style="color: rgb(255, 51, 0)">Password must be at least 5 characters</p>
 </ng-container> 
+
       <label for="psw-repeat"><b>Repeat Password</b></label>
       <input type="password" placeholder="Repeat Password" name="psw-repeat" formControlName="repassword">
-
 <ng-container *ngIf="passGroup?.get('repassword')?.touched">
   <p *ngIf="passGroup?.get('repassword')?.errors?.['required']" style="color: rgb(255, 51, 0)">Repeat password is required!</p>
-      <p *ngIf="passGroup?.errors?.['matchingPassValidator']" style="color: rgb(255, 51, 0)">Repeat password does not match password!</p>
+
+  <p *ngIf="passGroup?.errors?.['matchingPassValidator']" style="color: rgb(255, 51, 0)">Repeat password does not match password!</p>
 </ng-container>
 
 </ng-container>
   
-
+<!--Buttons-->
       <div class="clearfix">
-       <!--  <button type="button" class="cancelbtn">Cancel</button> -->
         <button type="submit" class="signupbtn" [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? '#FF6B6D' : '#04AA6D'}">Sign Up</button>
       </div>
 

@@ -4,31 +4,32 @@
 <!--!READ ONLY MODE-->
 <!--Main Content-->
 <ng-container *ngIf="!showEditRecipeForm">
+  <!--RECIPE IMAGE AND NAME-->
   <div class="recipeContent">
     <div class="recipeDetails">
       <div class="imageAndRecipeName">
         <img class="header-img" src="{{recipe.img}}" alt="RecipeImg"> 
        <div class="recipeTitle">
-        <h1 class="content-title">{{recipe.name}}</h1> <!--name of the recipe-->
+        <h1 class="content-title">{{recipe.name}}</h1> 
         <p class="date">from {{recipe._createdOn | momentPipe }}</p>
        </div>
       </div>
 
-
+      
       <div class="furtherDetails">  
       <!-- INGREDIENTS -->
        <article class="ingredients">
-        <h2>Ingredients</h2>
-        <ul > <!-- *ngFor="let ingredient of recipe.ingredients"-->
+        <h2>Ingredients:</h2>
+        <ul>
           <li>
-            <p> {{ recipe.ingredients}} </p>
+            <p>{{recipe.ingredients}}</p>
           </li>
         </ul>
       </article>
       <!-- INSTRUCTIONS -->
        <article class="instructions">
-        <h2>Instructions</h2>
-        <ul> <!-- *ngFor="let step of recipe.steps"-->
+        <h2>Instructions to follow:</h2>
+        <ul>
           <li>
             <div>
               <p>{{ recipe.steps }}</p>
@@ -40,9 +41,8 @@
     </div>
 
 
-    <!--BUTTONS AND COMMENTS-->
+    <!--BUTTONS-->
       <div class="buttons">
-     <!-- BUTTONS -->
     <button *ngIf="isLoggedIn && isOwner(recipe)" class="editRecipe" 
     (click)="onToggleEdit()" style="background-color: #FF6B6D">Edit Recipe</button>
     <button *ngIf="isLoggedIn && isOwner(recipe)" class="deleteRecipe" 
@@ -56,20 +56,22 @@
      <div class="addComment">
       <form class="commentForm" #form="ngForm" (ngSubmit)="addComment(form)">
         <textarea type="text" name="comment" id="comment" cols="15" rows="5" ngModel #textAreaComment="ngModel" required></textarea>
+        <ng-container *ngIf="textAreaComment.touched">
+          <p *ngIf="textAreaComment.errors?.['required']" style="color: rgb(255, 51, 0)">Comment text is required!</p>
+        </ng-container>
         <button class="commentRecipe">Add Comment</button>
-        <!--TODO validations and button css-->
       </form>
       </div>
     </ng-container>
 
-    <!--COMMENTS-->
+    <!--COMMENTS SECTION-->
     <div class="commentsSection" >
     <div class="recipeName">
       <h4>Comments for {{recipe.name}}:</h4>
     </div>
     <div class="userComment" *ngFor="let comment of comments">
     <header>
-      <h4>🍉 Slicey user commented:</h4> <!--TODO-->
+      <h4>🍉 Slicey user commented on {{comment._createdOn | momentPipe}}:</h4>
     </header>
     <div class="commentContent">
       <p>{{comment.content}}</p>
@@ -77,71 +79,56 @@
     </div>
     </div>
 
-  
-      </div>
+  </div>
 
   </div>
 </ng-container>
-
-
-
-
-
-
-
-
-
-
-
 
 
   <!--!EDIT MODE-->
 <div class="editContainer">
   <ng-container *ngIf="showEditRecipeForm">
     <form class="editForm" [formGroup]="form" (ngSubmit)="updateRecipeHandler()">
-      
+      <!--RECIPE NAME-->
       <div>
         <p>Recipe Name:</p>
         <input type="text" name="name" id="name" [value]="recipeDetails.name" formControlName="name">
       </div>
-      <!--recipe name validations-->
       <ng-container *ngIf="form.get('name')?.touched">
         <p *ngIf="form.get('name')?.errors?.['required']" style="color: rgb(255, 51, 0)">Recipe name is required!</p>
         <p *ngIf="form.get('name')?.errors?.['minlength']" style="color: rgb(255, 51, 0)">Recipe name should be at least 3 characters long!</p>
       </ng-container>
 
 
-      
+       <!--rRECIPE IMAGE-->
       <div class="img">
         <label>Image: <input type="text" name="img" placeholder="Image URL" [value]="recipeDetails.img" formControlName="img"></label>
       </div>
-     <!-- <ng-container *ngIf="form.get('img')?.touched">
+      <ng-container *ngIf="form.get('img')?.touched">
         <p *ngIf="form.get('img')?.errors?.['required']" style="color: rgb(255, 51, 0)">Image is required!</p>
-      </ng-container> -->
+      </ng-container>
 
-
+       <!--RECIPE INGREDIENTS-->
       <div>
         <p>Ingredients:</p>
         <textarea type="text" name="ingredients" id="ingredients" rows="5" placeholder="Enter all ingredients required..." [value]="recipeDetails.ingredients" formControlName="ingredients" ></textarea>
       </div>
-       <!-- ingredients validations-->
       <ng-container *ngIf="form.get('ingredients')?.touched">
-        <p *ngIf="form.get('ingredients')?.errors?.['required']" style="color: rgb(255, 51, 0)">Enter all ingredients required!</p>
+        <p *ngIf="form.get('ingredients')?.errors?.['required']" style="color: rgb(255, 51, 0)">Enter all ingredients separated by a comma!</p>
         <p *ngIf="form.get('ingredients')?.errors?.['minlength']" style="color: rgb(255, 51, 0)">Ingredients text should be at least 10 characters long!</p>
       </ng-container>
      
-
+      <!--RECIPE INSTRUCTIONS-->
       <div>
         <p>Instructions</p>
         <textarea type="text" name="steps" id="steps" rows="5" placeholder="Enter all steps that should be followed..." [value]="recipeDetails.steps" formControlName="steps" ></textarea>
       </div>
-      <!--steps validations-->
       <ng-container *ngIf="form.get('steps')?.touched">
-        <p *ngIf="form.get('steps')?.errors?.['required']" style="color: rgb(255, 51, 0)">Enter all instructions that should be followed!</p>
+        <p *ngIf="form.get('steps')?.errors?.['required']" style="color: rgb(255, 51, 0)">Enter all instructions separated by a comma!</p>
         <p *ngIf="form.get('steps')?.errors?.['minlength']" style="color: rgb(255, 51, 0)">Instructions text should be at least 10 characters long!</p>
       </ng-container>
 
-      <!--ACTIONS-->
+      <!--EDIT RECIPE BUTTONS-->
       <button type="submit" class="saveChanges" [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? '#FF6B6D' : '#04AA6D'}">Save Changes</button>
       <button class="cancel" (click)="onCancelEditRecipe($event)" style="background-color: #FF6B6D">Cancel</button>
     

@@ -10,7 +10,7 @@ const routes: Routes = [
     {path: 'recipes',
         children: [ 
             {path: '', pathMatch: 'full', component: MainComponent},
-            {path: ':recipeId', component: SingleRecipeComponent}, //!?
+            {path: ':recipeId', component: SingleRecipeComponent},
         ],
     },
     {path: 'create-recipe', component: CreateRecipeComponent, canActivate: [AuthActivate]}, //добавям гарда
