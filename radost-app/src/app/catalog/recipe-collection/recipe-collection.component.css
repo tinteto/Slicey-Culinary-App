@@ -8,7 +8,7 @@
  
  
  .welcome {
-     max-width: 60%;
+    max-width: 60%;
  }
  
  .headings h1 {
@@ -80,6 +80,12 @@
     font-family: arial;
     padding: 10px;
     border-radius: 3px;
+}
+
+.card img { /*!*/
+  display: block;
+  max-width: 100%;
+  height: 200px;
 }
 
 h4 {

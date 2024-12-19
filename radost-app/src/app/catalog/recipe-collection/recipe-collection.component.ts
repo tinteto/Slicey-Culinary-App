@@ -20,7 +20,7 @@ get isLoggedIn(): boolean {
   constructor (private apiService: ApiService, private userService: UserService) {}
 
  ngOnInit(): void {
-  this.apiService.getAllRecipes().subscribe((recipes) => {
+  this.apiService.getMostRecentRecipes().subscribe((recipes) => {
     console.log(recipes);
     this.recipes = recipes;
   });

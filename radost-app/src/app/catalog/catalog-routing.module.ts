@@ -13,7 +13,13 @@ const routes: Routes = [
             {path: ':recipeId', component: SingleRecipeComponent},
         ],
     },
-    {path: 'create-recipe', component: CreateRecipeComponent, canActivate: [AuthActivate]}, //добавям гарда
+
+    {path: 'recipes-reload',
+        children: [
+            {path: ':recipeId', component: SingleRecipeComponent}
+        ]
+    },
+    {path: 'create-recipe', component: CreateRecipeComponent, canActivate: [AuthActivate]},
     
 ];
 

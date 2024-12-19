@@ -10,7 +10,7 @@
       <div class="imageAndRecipeName">
         <img class="header-img" src="{{recipe.img}}" alt="RecipeImg"> 
        <div class="recipeTitle">
-        <h1 class="content-title">{{recipe.name}}</h1> 
+        <h1 class="content-title">{{recipe.name | emoji}}</h1> 
         <p class="date">from {{recipe._createdOn | momentPipe }}</p>
        </div>
       </div>
@@ -67,11 +67,12 @@
     <!--COMMENTS SECTION-->
     <div class="commentsSection" >
     <div class="recipeName">
-      <h4>Comments for {{recipe.name}}:</h4>
+      <h4>Comments for {{recipe.name | emoji}}:</h4>
+     
     </div>
     <div class="userComment" *ngFor="let comment of comments">
     <header>
-      <h4>🍉 Slicey user commented on {{comment._createdOn | momentPipe}}:</h4>
+      <h4> Slicey user commented on {{comment._createdOn | momentPipe}}:</h4>
     </header>
     <div class="commentContent">
       <p>{{comment.content}}</p>

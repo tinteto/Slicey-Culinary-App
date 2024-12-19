@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 import { ErrorService } from './core/error/error.service';
 
 
-const apiUrl = environment.apiUrl //взимам си url-a от обекта environment
+const apiUrl = environment.apiUrl;
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
@@ -29,9 +29,6 @@ constructor(private userService: UserService, private errorService: ErrorService
 
 const token = this.userService.getToken();
   
- //request.url.startsWith('/users')
- //url: request.url.replace('/users', apiUrl),
-
  if (token != null) {
     request = request.clone({
    setHeaders: {'X-Authorization': token }
@@ -44,12 +41,12 @@ if (token && !request.headers.has('Content-Type')) {
 });
 }
 
-   console.log(request); //принтира всички заявки, които правим
+ //  console.log(request);
 
     return next.handle(request).pipe(
       catchError((error) => {
         if(error.status === 401) {
-          this.router.navigate(['/auth/login']); //ако не съм оторизиран за даденото събитие ме препраща към логин формата
+          this.router.navigate(['/auth/login']); 
         } else if (error.status === 403) {
         localStorage.clear();
         this.router.navigate(['/auth/login']);
@@ -57,7 +54,7 @@ if (token && !request.headers.has('Content-Type')) {
           this.errorService.setError(error);
           this.router.navigate(['/error']);
         }
-        return [error]; //винаги връща масив от грешки
+        return [error]; 
       })
     );
     }    

@@ -28,8 +28,8 @@
 <div class="recipeContainer">
     <div *ngFor="let recipe of recipes" class="recipes">
     <div class="card">
-        <img [src]="recipe.img" alt="RecipeImg" style="width:100%">
-        <h4>{{ recipe.name | emoji}}</h4>
+        <img [src]="recipe.img" alt="RecipeImg">
+        <h4>{{ recipe.name | emoji | sliceString : 22}}</h4>
         <p class="date">{{ recipe._createdOn | momentPipe }}</p>
         <p><button [routerLink]="recipe._id" style="background-color: #04AA6D">View Recipe</button></p> 
     </div>

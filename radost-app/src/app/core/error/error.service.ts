@@ -11,7 +11,7 @@ export class ErrorService {
     constructor() {}
 
     setError(error: any): void {
-   this.apiError$$.next(error); //хващаме грешката и я записваме в събджекта
+   this.apiError$$.next(error); 
     }
 
 

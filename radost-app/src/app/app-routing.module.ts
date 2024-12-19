@@ -9,16 +9,19 @@ const routes: Routes = [
   {path: '', pathMatch:'full', redirectTo:'/home'},
   {path: 'home', component: HomeComponent},
   {path: 'auth',
-    loadChildren: () => import('./user/user.module').then((module) => module.UserModule) //lazy Module
+    loadChildren: () => import('./user/user.module').then((module) => module.UserModule) 
+  },
+  {path: 'catalog',
+    loadChildren: () => import('./catalog/catalog.module').then((module) => module.CatalogModule)
   },
   {path: 'about', component: AboutComponent},
   {path: 'error', component: ErrorComponent},
-  {path: '**', redirectTo: '/404'},
   {path: '404', component: PageNotFoundComponent},
+  {path: '**', redirectTo: '/404'},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes)], 
   exports: [RouterModule],
 })
 export class AppRoutingModule { }

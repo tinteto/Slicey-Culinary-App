@@ -17,19 +17,16 @@ export class CreateRecipeComponent {
       return;
     }
     
-  const {name, ingredients, steps, img} = form.value; //взимам въведените стойности от формата
-  // const ingredientsArray = ingredients.split('\n'); //това работи, когато подавам масиви "let recipe of..." в темплейта
-  // const stepsArray = steps.split('\n');
+  const {name, ingredients, steps, img} = form.value; 
 
-//на създаването на рецептата ги изпращам като масиви ingredients и steps
   this.apiService.createNewRecipe(name, ingredients, steps, img).subscribe(() => {
-  this.router.navigate(['/recipes']);
+  this.router.navigate(['/catalog/recipes']);
 })
   }
 
   onCancel(event: Event): void {
 event.preventDefault();
-this.router.navigate(['/recipes']);
+this.router.navigate(['/catalog/recipes']);
   }
 
 }

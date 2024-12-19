@@ -33,8 +33,8 @@ export class HeaderComponent {
 //   console.log(query); //{}
   
 //   this.apiService.searchRecipe(query).subscribe(() => {
-//     this.router.navigate(['/recipes'], {queryParams: {search: query}});
-//http://localhost:3030/data/recipes?where=name%20LIKE%20%22lasagna%22
+//     this.router.navigate(['/catalog/recipes'], {queryParams: {search: query}});
+  //http://localhost:3030/data/recipes?where=name%20LIKE%20%22lasagna%22
 //   });
 // }
 
@@ -46,9 +46,9 @@ export class HeaderComponent {
   this.router.navigate(['/auth/login']);
   }, 
   error: () => {
-  this.router.navigate(['/auth/login'])
+  this.router.navigate(['/auth/login']);
   }
-    })
+  })
   }
 
 }

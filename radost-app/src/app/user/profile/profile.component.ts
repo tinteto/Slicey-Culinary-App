@@ -49,12 +49,11 @@ updateProfileHandler(): void {
     return;
   }
 
-  //данните от type userProfileDetails ще се ъпдейтнат с данните, въведени във формата
+  
   this.userProfileDetails = this.form.value as UserProfileDetails;
-  //запазваме новите данни в type userProfileDetails
   const {username, email} = this.userProfileDetails;
 
-  //когато се ъпдейтне формата, ще се зареди картичката
+
   this.userService.updateUserProfile(username, email).subscribe(()=> {
   this.onShowEditProfile();
   });

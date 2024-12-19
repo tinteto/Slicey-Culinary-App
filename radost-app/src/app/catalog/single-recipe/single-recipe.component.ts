@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
@@ -13,6 +13,7 @@ import { UserService } from 'src/app/user/user.service';
   styleUrls: ['./single-recipe.component.css']
 })
 export class SingleRecipeComponent implements OnInit {
+  @Input() comment!: Comment;
   recipe = {} as Recipe;
   comments: Comment[] | null = [];
 
@@ -38,10 +39,8 @@ get isLoggedIn(): boolean {
 }
 
 get ownerId(): string {
-  return this.userService.user?._id || ''; //взимам си Id-то, за да проверявам дали може да редактира и изтрива рецепти
+  return this.userService.user?._id || '';
 }
-
-
 
 
 constructor(private formBuilder: FormBuilder, private userService: UserService, private apiService: ApiService, private activatedRoute: ActivatedRoute, private router: Router) {}
@@ -49,7 +48,7 @@ constructor(private formBuilder: FormBuilder, private userService: UserService, 
   
   ngOnInit(): void {  
   this.activatedRoute.params.subscribe((data) => {
-    const id = data['recipeId']; //id-то на рецептата
+    const id = data['recipeId'];
  
     this.apiService.getSingleRecipeById(id).subscribe((recipe) => {
     this.recipe = recipe;
@@ -64,11 +63,10 @@ constructor(private formBuilder: FormBuilder, private userService: UserService, 
     this.form.controls.steps.setValue(stepsString);
 });
 
-
-
   this.apiService.getAllCommentsForARecipe(id).subscribe((comments) => {
   this.comments = comments as any;
 });
+
 });
 }
 
@@ -77,15 +75,15 @@ addComment(form: NgForm): void {
 if(form.invalid) {
   return;
 }
-
-const content = form.value.comment; //{comment: Strahotna e!}
+const content = form.value.comment;
 
 this.activatedRoute.params.subscribe((data => {
   const id = data['recipeId'];
 
-  this.apiService.postComment(id, content).subscribe(() => { //[{}]
-    this.onToggleComment();
-  });
+  this.apiService.postComment(id, content).subscribe(() => {
+  this.onToggleComment();
+  this.router.navigate([`catalog/recipes-reload/${id}`]);
+});
 }))
 };
 
@@ -95,22 +93,13 @@ const isUserOwner = recipe._ownerId === this.userService.user?._id;
 return isUserOwner;
 }
 
-// areIngredientsArray(recipe: Recipe): boolean {
-//   const isArray = typeof recipe.ingredients === 'object';
-//   return isArray;
-// }
-
-// areInstructionsArray(recipe: Recipe): boolean {
-//   const isArray = typeof recipe.steps === 'object';
-//   return isArray;
-// }
 
 onDeleteRecipe(): void {
     this.activatedRoute.params.subscribe((data) => {
       const id = data['recipeId'];
 
       this.apiService.deleteRecipe(id).subscribe(() => {
-        this.router.navigate(['/recipes']);
+      this.router.navigate(['/catalog/recipes']);
       })
     })
 }
@@ -138,7 +127,7 @@ updateRecipeHandler(): void {
 
 
   this.apiService.updateRecipe(id, name, ingredients, steps, img).subscribe((recipe) => {
-    console.log(recipe); //на update изпраща ingredients и steps като обекти
+  //  console.log(recipe); //на update изпраща ingredients и steps като обекти
   
     this.recipe = recipe;
     this.onToggleEdit();

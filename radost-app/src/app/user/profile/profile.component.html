@@ -39,8 +39,9 @@
     </ng-container>
 
 <!--Buttons-->
-    <button class="saveProfile"  [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? '#FF6B6D' : '#04AA6D'}">Save Changes</button>
     <button class="goBack" (click)="onCancel($event)" style="background-color: #FF6B6D">Go Back</button>
+    <button class="saveProfile"  [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? '#FF6B6D' : '#04AA6D'}">Save Changes</button>
+   
 </div>
 </form>
 </ng-container>

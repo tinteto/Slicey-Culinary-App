@@ -72,6 +72,134 @@
                     "Cook until done"
                 ],
                 "_createdOn": 1613551388703
+            },
+            "fa479791-ea89-490b-9426-76bd8662e0a1": {
+                "name": "Carrot Cake",
+                "ingredients": [
+                    "175g light muscovado sugar", 
+                    "175ml sunflower oil",
+                    "3 large eggs lightly beaten", 
+                    "140g grated carrot (about 3 medium)", 
+                    "100g raisins", 
+                    "1 large orange zested", 
+                    "175g self-raising flour", 
+                    "1 tsp bicarbonate of soda", 
+                    "1 tsp ground cinnamon", 
+                    "½ tsp grated nutmeg"
+                ],
+                "steps": ["Heat the oven to 180C/160C fan/gas 4. Oil and line the base and sides of an 18cm square cake tin with baking parchment.", 
+                "Tip the sugar, sunflower oil and eggs into a big mixing bowl. Lightly mix with a wooden spoon. Stir in the carrots, raisins and orange zest.",
+                 "Sift the flour, bicarbonate of soda, cinnamon and nutmeg into the bowl. Mix everything together, the mixture will be soft and almost runny.", 
+                 "Pour the mixture into the prepared tin and bake for 40-45 mins or until it feels firm and springy when you press it in the centre.",
+                 "Cool in the tin for 5 mins, then turn it out, peel off the paper and cool on a wire rack."],
+                "img": "assets\\karina-kungla-Eplzzrbvp5c-unsplash.jpg",
+                "_createdOn": 1734598624470,
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8"
+            },
+            "ca90c571-0157-407f-9f9c-b5d68a9888fd": {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "name": "Oven-baked risotto",
+                "ingredients": [
+                "250g pack smoked bacon chopped into small pieces",
+                "1 onion chopped",
+                "25g butter",
+                "300g risotto rice",
+                "half a glass of white wine (optional)",
+                "150g pack cherry tomatoes halved",
+                "700ml hot chicken stock",
+                "50g parmesan grated"
+            ],
+                "steps": [
+                "Heat oven to 200C/fan 180C/gas 6. Fry the bacon pieces in an ovenproof pan or casserole dish for 3-5 mins until golden and crisp. Stir in the onion and butter and cook for 3-4 mins until soft. Tip in the rice and mix well until coated. Pour over the wine if using and cook for 2 mins until absorbed.",
+                "Add the cherry tomatoes and the hot stock, then give the rice a quick stir. Cover with a tightly fitting lid and bake for 18 mins until just cooked. Stir through most of the parmesan and serve sprinkled with the remainder."
+                ],
+                "img": "assets\\rob-wicks-qrleIV6KkfI-unsplash.jpg",
+                "_createdOn": 1734600067554
+            },
+            "c9b87b8c-ff0f-42e7-b34c-476138dd0ad9": {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "name": "Sweet & sour chicken",
+                "ingredients": [
+                "9 tbsp tomato ketchup",
+                "3 tbsp malt vinegar", 
+                "4 tbsp dark muscovado sugar", 
+                "2 garlic cloves crushed", 
+                "4 skinless and boneless chicken breast cut into chunks", 
+                "1 small onion roughly chopped", 
+                "2 red peppers seeded and cut into chunks", 
+                "227g can pineapple pieces in juice, drained", 
+                "100g sugar snap peas roughly sliced", 
+                "handful salted, roasted cashew nuts."
+                ],
+                "steps": [
+                "In a large microwaveable dish, mix the ketchup, vinegar, sugar and garlic thoroughly with the chicken, onion and peppers. Microwave, uncovered, on high for 8-10 mins until the chicken is starting to cook and the sauce is sizzling.",
+                 "Stir in the pineapple pieces and sugar snap peas and return to the microwave for another 3-5 mins until the chicken is completely cooked. Leave to stand for a few minutes, then stir in the cashews, if using, and serve."
+                ],
+                "img": "assets\\deepak-surya-sfa5-CbN_4w-unsplash.jpg",
+                "_createdOn": 1734600642418
+            },
+            "93a36e7b-a4fe-4271-86db-b245606269c3": {
+                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
+                "name": "Baked oatmeal with raspberry",
+                "ingredients": [
+                    "½ tsp coconut oil melted",
+                     "120g porridge oats", 
+                     "2 tbsp desiccated coconut", 
+                     "1 tsp ground cinnamon", 
+                     "40g walnuts roughly chopped", 
+                     "200g raspberries", 
+                     "300ml plant-based milk", 
+                     "1 tbsp agave syrup."
+                    ],
+                "steps": [
+                "Heat the oven to 180C/160C fan/gas 4. Brush the melted coconut oil over the base and sides of a small baking dish (about 20 x 15cm). Combine the oats, coconut, cinnamon, walnuts, most of the raspberries and a pinch of salt in a bowl. Pour in the plant-based milk and agave, mix well, then pour the mixture into the prepared baking dish.",
+                "Scatter over the remaining raspberries. Bake for 20-25 mins until the oatmeal is golden brown. Serve warm."
+            ],
+                "img": "assets\\christian-wiediger-r1VY6AeI7bY-unsplash.jpg",
+                "_createdOn": 1734601629142
+            },
+            "ce46ac78-36a5-45f9-a38a-fa19fbd8c900": {
+                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
+                "name": "Carrot & lentil soup",
+                "ingredients": [
+                    "2 tsp cumin seeds", 
+                    "pinch chilli flakes", 
+                    "2 tbsp olive oil", 
+                    "600g carrots washed and coarsely grated", 
+                    "140g red lentils", 
+                    "1l hot vegetable stock", 
+                    "125ml milk, plain yogurt."
+            ],
+                "steps": [
+                "Heat a large saucepan and dry-fry 2 tsp cumin seeds and a pinch of chilli flakes for 1 min, or until they start to jump around the pan and release their aromas.", 
+                "Scoop out about half with a spoon and set aside. Add 2 tbsp olive oil, 600g coarsely grated carrots, 140g split red lentils, 1l hot vegetable stock and 125ml milk to the pan and bring to the boil.", 
+                "Simmer for 15 mins until the lentils have swollen and softened.", 
+                "Whizz the soup with a stick blender or in a food processor until smooth (or leave it chunky if you prefer).",
+                "Season to taste and finish with a dollop of plain yogurt and a sprinkling of the reserved toasted spices."
+            ],
+                "img": "assets\\mia-stern-R0ZhtSDG_FU-unsplash.jpg",
+                "_createdOn": 1734602273615
+            },
+            "fd5d6f9a-7f7c-45d0-bca5-7f639806558f": {
+                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
+                "name": "Cherry tomato & pesto pasta",
+                "ingredients": [
+                    "2 tbsp olive oil", 
+                    "3 garlic cloves chopped", 
+                    "1 tsp crushed chilli flakes", 
+                    "2 x 400g cans cherry tomatoes", 
+                    "500g penne", 
+                    "200g kale chopped", 
+                    "4 tbsp ricotta", 
+                    "4 tbsp fresh pesto", 
+                    "parmesan to serve."
+                ],
+                "steps": [
+                "Heat the oil in a large saucepan, add the garlic and cook for 2 mins until golden. Add the chilli flakes and tomatoes, season well, and simmer for 15 mins until the sauce is thick and reduced.", 
+                "While the sauce is cooking, cook the pasta following pack instructions – add the kale for the final 2 mins of cooking. Drain well and stir into the sauce, then divide between 4 bowls. Top each with a dollop of ricotta, a drizzle of pesto and shavings of Parmesan, if you like."
+            ],
+                "img": "assets\\eaters-collective-12eHC6FxPyg-unsplash.jpg",
+                "_createdOn": 1734603350131
             }
         },
         "comments": {

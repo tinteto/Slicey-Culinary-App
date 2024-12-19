@@ -11,13 +11,13 @@ const { apiUrl } = environment;
   providedIn: 'root'
 })
 export class ApiService {
-  // apiUrl = 'http://localhost:3030'; ако не искам да използвам environment
+  // apiUrl = 'http://localhost:3030';
   constructor(private http: HttpClient) {}
 
 
 
   getAllRecipes() {
-    return this.http.get<Recipe[]>(`${apiUrl}/data/recipes`); //получаваме [{}, {}, {}]
+    return this.http.get<Recipe[]>(`${apiUrl}/data/recipes`);
   }
 
   getSingleRecipeById(recipeId: string) {
@@ -33,7 +33,7 @@ export class ApiService {
 
   updateRecipe(recipeId: string, name: string, ingredients: string, steps: string, img: string  ) { 
     const payload = { name, ingredients, steps, img };
-    return this.http.put<Recipe>(`${apiUrl}/data/recipes/${recipeId}` , payload); //изпраща данните на сървъра като стринг
+    return this.http.put<Recipe>(`${apiUrl}/data/recipes/${recipeId}` , payload);
   }
 
 
@@ -46,7 +46,7 @@ export class ApiService {
   //Advanced Retrieval
   
   getAllCommentsForARecipe(recipeId: string) {
-    return this.http.get<Comment[]>(`${apiUrl}/data/comments?where=recipeId%3D%22${recipeId}%22`); //[{}]
+    return this.http.get<Comment[]>(`${apiUrl}/data/comments?where=recipeId%3D%22${recipeId}%22`); 
   }
 
   postComment(recipeId: string, content: string) {
@@ -56,8 +56,9 @@ export class ApiService {
 
 
   getMostRecentRecipes() {
-    return this.http.get<Recipe[]>(`${apiUrl}/data/recipes?select=_id%2Cname%2Cimg&sortBy=_createdOn%20desc&pageSize=3`);
+    return this.http.get<Recipe[]>(`${apiUrl}/data/recipes?sortBy=_createdOn%20desc`);
   }
+
 
 
   searchRecipe(query: string) {

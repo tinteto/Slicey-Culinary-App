@@ -19,7 +19,7 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     UserRoutingModule, //импортваме си userRoutingModule
-    RouterModule, //! задължително импортваме RouterModule
+    RouterModule, //! IMPORTANT
     ReactiveFormsModule,
     SharedModule, 
   ]

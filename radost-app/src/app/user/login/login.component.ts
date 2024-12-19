@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   form = this.formBuilder.group({
     email: ['', [Validators.required, Validators.pattern('[A-Za-z0-9.-]+@[a-zA-Z0-9.-]+\.(com|bg|org)')]], 
-    password: ['', [Validators.required]], //Validators.pattern('[A-Z]+[a-z]+[0-9]+')
+    password: ['', [Validators.required]],
   })
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {}
@@ -25,7 +25,7 @@ export class LoginComponent {
     const { email, password } = this.form.value;
 
     this.userService.login(email!, password!).subscribe(() => {
-      this.router.navigate(['/recipes']);
+      this.router.navigate(['/catalog/recipes']);
     });
   }
 }

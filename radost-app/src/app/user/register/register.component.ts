@@ -37,7 +37,7 @@ export class RegisterComponent {
     if(this.form.invalid) {
       return;
     }
-  //  console.log(this.form.value); //получавам обект със всички стойности на формата
+
 
     const { 
       username, 
@@ -46,7 +46,7 @@ export class RegisterComponent {
     } = this.form.value;
   
     this.userService.register(username!, email!, password!, repassword!).subscribe(() => {
-      this.router.navigate(['/recipes']);
+      this.router.navigate(['/catalog/recipes']);
     })
   }
 }

@@ -22,7 +22,7 @@ Welcome page: Contains welcome message with Login and Register buttons for guest
 
 b. Recipe Catalog: 
 Contains a welcome message with Login and Register buttons for guests, and a quick link to About page. Login and Register buttons are not visible to the registered users.
-Contains a collection of all recipes. Each recipe card contains recipe name, image, post date and a link to its detailed page.
+Contains a collection of all recipes. Each recipe card contains recipe name, image, post date and a link to its detailed page. Recipes are displayed according to their creation time, newest first.
 
 c. Detailed Recipe Page: 
 Each recipe contains name, date of creation, image, ingredients and instructions lists and comment section visible to non-users.
