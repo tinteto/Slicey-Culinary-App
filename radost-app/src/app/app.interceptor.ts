@@ -24,9 +24,6 @@ constructor(private userService: UserService, private errorService: ErrorService
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-
-//const token = localStorage.getItem(this.userKey);
-
 const token = this.userService.getToken();
   
  if (token != null) {

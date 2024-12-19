@@ -10,7 +10,7 @@ export class UserAuthComponent implements OnInit {
   isUserAuthenticating = true;
 
   constructor(private userService: UserService) {}
-//чрез този компонент и извличането на данните на оторизирания юзър не позволяваме на рефреш да се разлогне
+//не се разлогва на рефреш
   ngOnInit(): void {
     this.userService.getUserProfile().subscribe({
    next: () => {

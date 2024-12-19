@@ -60,7 +60,6 @@ export class ApiService {
   }
 
 
-
   searchRecipe(query: string) {
     return this.http.get<Recipe[]>(`${apiUrl}/data/recipes?where=name%20LIKE%20%22${query}%22`);
   }

@@ -22,16 +22,6 @@
             <li *ngIf="!isLoggedIn"><a routerLink="/auth/login">Login</a></li> 
             <li *ngIf="!isLoggedIn"><a routerLink="/auth/register">Register</a></li>  
         </div>       
-           
-            <!--TO do search bar
-           <div class="search">
-            <form #form="ngForm" (ngSubmit)="onSearch(form)">
-                <input type="text" placeholder="Search Recipes" name="search" [(ngModel)]="search" ngModel #inputSearch="ngModel">
-                <button>
-                    <i class="fa fa-search"></i>
-                </button>
-            </form>
-            </div> -->
         </ul>
     </nav>
 </header>

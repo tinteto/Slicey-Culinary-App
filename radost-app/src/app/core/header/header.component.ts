@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
-
-import { ActivatedRoute, Router } from '@angular/router';
-
-import { ApiService } from 'src/app/api.service';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
 
 
@@ -14,7 +10,7 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class HeaderComponent {
   search = '';
-  constructor(private userService: UserService, private apiService: ApiService, private activatedRoute: ActivatedRoute, private router: Router) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   get isLoggedIn(): boolean { 
     return this.userService.isLogged; 
@@ -24,23 +20,6 @@ export class HeaderComponent {
   get username(): string {
     return this.userService.user?.username || '';
   }
-
-
-// onSearch(form: NgForm): void { 
-
-//   if(form.invalid) {
-//     return;
-//   }
-//   const query = this.search;  //in HTML - [(ngModel)]="search"   //form.control.value;
-//   console.log(query); //{}
-  
-//   this.apiService.searchRecipe(query).subscribe(() => {
-//     this.router.navigate(['/recipes'], {queryParams: {search: query}});
-//   http://localhost:3030/data/recipes?where=name%20LIKE%20%22lasagna%22
-//   });
-// }
-
- 
 
   logout() {
     this.userService.logout().subscribe({
