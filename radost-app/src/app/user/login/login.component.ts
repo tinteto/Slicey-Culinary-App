@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,7 @@ export class LoginComponent {
     const { email, password } = this.form.value;
 
     this.userService.login(email!, password!).subscribe(() => {
-      this.router.navigate(['/catalog/recipes']);
+      this.router.navigate(['/recipes']);
     });
   }
 }

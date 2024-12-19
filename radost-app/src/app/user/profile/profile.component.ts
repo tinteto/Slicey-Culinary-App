@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+
 import { UserService } from '../user.service';
 import { AuthUser, UserProfileDetails } from 'src/app/types/user';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -44,12 +45,10 @@ onShowEditProfile(): void {
 }
 
 updateProfileHandler(): void {
-
- if(this.form.invalid) {
+  if(this.form.invalid) {
     return;
   }
 
-  
   this.userProfileDetails = this.form.value as UserProfileDetails;
   const {username, email} = this.userProfileDetails;
 

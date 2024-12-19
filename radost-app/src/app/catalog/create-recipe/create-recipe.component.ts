@@ -20,13 +20,13 @@ export class CreateRecipeComponent {
   const {name, ingredients, steps, img} = form.value; 
 
   this.apiService.createNewRecipe(name, ingredients, steps, img).subscribe(() => {
-  this.router.navigate(['/catalog/recipes']);
+  this.router.navigate(['/recipes']);
 })
   }
 
   onCancel(event: Event): void {
 event.preventDefault();
-this.router.navigate(['/catalog/recipes']);
+this.router.navigate(['/recipes']);
   }
 
 }

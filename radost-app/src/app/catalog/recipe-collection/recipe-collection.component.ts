@@ -21,7 +21,7 @@ get isLoggedIn(): boolean {
 
  ngOnInit(): void {
   this.apiService.getMostRecentRecipes().subscribe((recipes) => {
-    console.log(recipes);
+  //  console.log(recipes);
     this.recipes = recipes;
   });
 }

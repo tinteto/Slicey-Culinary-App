@@ -7,6 +7,7 @@ import { SliceStringPipe } from './pipes/slice-string.pipe';
 
 
 
+
 @NgModule({
   declarations: [ MomentPipePipe, EmojiPipe, SliceStringPipe ], //components, directives, pipes
   imports: [

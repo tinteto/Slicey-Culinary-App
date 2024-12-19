@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+
 import { matchingPassValidator } from 'src/app/shared/utils/matchingPassValidator';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -46,7 +47,7 @@ export class RegisterComponent {
     } = this.form.value;
   
     this.userService.register(username!, email!, password!, repassword!).subscribe(() => {
-      this.router.navigate(['/catalog/recipes']);
+      this.router.navigate(['/recipes']);
     })
   }
 }

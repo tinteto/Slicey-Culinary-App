@@ -10,8 +10,8 @@ import {
 import { catchError, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { UserService } from './user/user.service';
-import { Router } from '@angular/router';
 import { ErrorService } from './core/error/error.service';
+import { Router } from '@angular/router';
 
 
 const apiUrl = environment.apiUrl;
@@ -25,7 +25,7 @@ constructor(private userService: UserService, private errorService: ErrorService
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
 
-// const token = localStorage.getItem(this.userKey);
+//const token = localStorage.getItem(this.userKey);
 
 const token = this.userService.getToken();
   

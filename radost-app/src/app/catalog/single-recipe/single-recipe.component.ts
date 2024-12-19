@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { Comment } from 'src/app/types/comment';
@@ -82,7 +83,7 @@ this.activatedRoute.params.subscribe((data => {
 
   this.apiService.postComment(id, content).subscribe(() => {
   this.onToggleComment();
-  this.router.navigate([`catalog/recipes-reload/${id}`]);
+  this.router.navigate([`/recipes-reload/${id}`]);
 });
 }))
 };
@@ -99,7 +100,7 @@ onDeleteRecipe(): void {
       const id = data['recipeId'];
 
       this.apiService.deleteRecipe(id).subscribe(() => {
-      this.router.navigate(['/catalog/recipes']);
+      this.router.navigate(['/recipes']);
       })
     })
 }

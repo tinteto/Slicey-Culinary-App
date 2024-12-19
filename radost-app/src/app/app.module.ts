@@ -14,6 +14,9 @@ import { UserAuthComponent } from './user-auth/user-auth.component';
 
 
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +29,7 @@ import { UserAuthComponent } from './user-auth/user-auth.component';
     CoreModule, //header, footer, home, error
     SharedModule,
     // UserModule,
-    // CatalogModule, //експортваме каталог модула, който си е експортнал каталог раутинг модула
+    CatalogModule, //експортваме каталог модула, който си е експортнал каталог раутинг модула
     HttpClientModule,
     AppRoutingModule, // винаги да стои накрая
   ],

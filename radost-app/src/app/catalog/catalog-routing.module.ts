@@ -6,6 +6,7 @@ import { MainComponent } from "./main/main.component";
 import { AuthActivate } from "../guards/auth.activate";
 
 
+
 const routes: Routes = [
     {path: 'recipes',
         children: [ 

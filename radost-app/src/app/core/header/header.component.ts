@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { ApiService } from 'src/app/api.service';
 import { UserService } from 'src/app/user/user.service';
 
@@ -33,8 +35,8 @@ export class HeaderComponent {
 //   console.log(query); //{}
   
 //   this.apiService.searchRecipe(query).subscribe(() => {
-//     this.router.navigate(['/catalog/recipes'], {queryParams: {search: query}});
-  //http://localhost:3030/data/recipes?where=name%20LIKE%20%22lasagna%22
+//     this.router.navigate(['/recipes'], {queryParams: {search: query}});
+//   http://localhost:3030/data/recipes?where=name%20LIKE%20%22lasagna%22
 //   });
 // }
 
