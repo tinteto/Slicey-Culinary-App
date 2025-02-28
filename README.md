@@ -2,7 +2,7 @@
 Softuni Exam, Angular project, December 2024
 
 1. Application Name: 
-Slicey - Recipe Site
+Slicey - Recipe App
 
 2. Frameworks and Technologies Used: 
 Angular, SoftUni Practice Server.
