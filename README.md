@@ -1,4 +1,4 @@
-# My-Angular-Project
+# Slicey-Culinary-App
 Softuni Exam, Angular project, December 2024
 
 1. Application Name: 
